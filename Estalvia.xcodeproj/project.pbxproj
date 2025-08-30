@@ -6,15 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CBAA413C2E50E42100F632A9 /* SmartLogging in Frameworks */ = {isa = PBXBuildFile; productRef = CBAA413B2E50E42100F632A9 /* SmartLogging */; };
+		CBAA413F2E50E4C100F632A9 /* NetworkLayer in Frameworks */ = {isa = PBXBuildFile; productRef = CBAA413E2E50E4C100F632A9 /* NetworkLayer */; };
+		CBDD3FAA2E5A21AD00140B11 /* SwiftInject in Frameworks */ = {isa = PBXBuildFile; productRef = CBDD3FA92E5A21AD00140B11 /* SwiftInject */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		CBD33E132E3E79330089C92C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CBD33DF42E3E792D0089C92C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CBD33DFB2E3E792E0089C92C;
-			remoteInfo = Estalvia;
-		};
-		CBD33E1D2E3E79340089C92C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CBD33DF42E3E792D0089C92C /* Project object */;
 			proxyType = 1;
@@ -26,7 +25,6 @@
 /* Begin PBXFileReference section */
 		CBD33DFC2E3E792E0089C92C /* Estalvia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Estalvia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD33E122E3E79330089C92C /* EstalviaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EstalviaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBD33E1C2E3E79340089C92C /* EstalviaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EstalviaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -53,11 +51,6 @@
 			path = EstalviaTests;
 			sourceTree = "<group>";
 		};
-		CBD33E1F2E3E79340089C92C /* EstalviaUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = EstalviaUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,17 +58,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBAA413C2E50E42100F632A9 /* SmartLogging in Frameworks */,
+				CBDD3FAA2E5A21AD00140B11 /* SwiftInject in Frameworks */,
+				CBAA413F2E50E4C100F632A9 /* NetworkLayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CBD33E0F2E3E79330089C92C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CBD33E192E3E79340089C92C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -90,7 +79,6 @@
 			children = (
 				CBD33DFE2E3E792E0089C92C /* Estalvia */,
 				CBD33E152E3E79330089C92C /* EstalviaTests */,
-				CBD33E1F2E3E79340089C92C /* EstalviaUITests */,
 				CBD33DFD2E3E792E0089C92C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,7 +88,6 @@
 			children = (
 				CBD33DFC2E3E792E0089C92C /* Estalvia.app */,
 				CBD33E122E3E79330089C92C /* EstalviaTests.xctest */,
-				CBD33E1C2E3E79340089C92C /* EstalviaUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,6 +102,7 @@
 				CBD33DF82E3E792E0089C92C /* Sources */,
 				CBD33DF92E3E792E0089C92C /* Frameworks */,
 				CBD33DFA2E3E792E0089C92C /* Resources */,
+				CBACDE502E5AE4AE002D2F4A /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -125,6 +113,9 @@
 			);
 			name = Estalvia;
 			packageProductDependencies = (
+				CBAA413B2E50E42100F632A9 /* SmartLogging */,
+				CBAA413E2E50E4C100F632A9 /* NetworkLayer */,
+				CBDD3FA92E5A21AD00140B11 /* SwiftInject */,
 			);
 			productName = Estalvia;
 			productReference = CBD33DFC2E3E792E0089C92C /* Estalvia.app */;
@@ -153,29 +144,6 @@
 			productReference = CBD33E122E3E79330089C92C /* EstalviaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		CBD33E1B2E3E79340089C92C /* EstalviaUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CBD33E2D2E3E79340089C92C /* Build configuration list for PBXNativeTarget "EstalviaUITests" */;
-			buildPhases = (
-				CBD33E182E3E79340089C92C /* Sources */,
-				CBD33E192E3E79340089C92C /* Frameworks */,
-				CBD33E1A2E3E79340089C92C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CBD33E1E2E3E79340089C92C /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				CBD33E1F2E3E79340089C92C /* EstalviaUITests */,
-			);
-			name = EstalviaUITests;
-			packageProductDependencies = (
-			);
-			productName = EstalviaUITests;
-			productReference = CBD33E1C2E3E79340089C92C /* EstalviaUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -193,10 +161,6 @@
 						CreatedOnToolsVersion = 26.0;
 						TestTargetID = CBD33DFB2E3E792E0089C92C;
 					};
-					CBD33E1B2E3E79340089C92C = {
-						CreatedOnToolsVersion = 26.0;
-						TestTargetID = CBD33DFB2E3E792E0089C92C;
-					};
 				};
 			};
 			buildConfigurationList = CBD33DF72E3E792D0089C92C /* Build configuration list for PBXProject "Estalvia" */;
@@ -208,6 +172,11 @@
 			);
 			mainGroup = CBD33DF32E3E792D0089C92C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CBAA413A2E50E42100F632A9 /* XCRemoteSwiftPackageReference "SmartLogging" */,
+				CBAA413D2E50E4C100F632A9 /* XCRemoteSwiftPackageReference "NetworkLayer" */,
+				CBDD3FA82E5A21AD00140B11 /* XCRemoteSwiftPackageReference "SwiftInject" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CBD33DFD2E3E792E0089C92C /* Products */;
 			projectDirPath = "";
@@ -215,7 +184,6 @@
 			targets = (
 				CBD33DFB2E3E792E0089C92C /* Estalvia */,
 				CBD33E112E3E79330089C92C /* EstalviaTests */,
-				CBD33E1B2E3E79340089C92C /* EstalviaUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -235,14 +203,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CBD33E1A2E3E79340089C92C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CBACDE502E5AE4AE002D2F4A /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 12;
 			files = (
 			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			showEnvVarsInLog = 0;
 		};
-/* End PBXResourcesBuildPhase section */
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CBD33DF82E3E792E0089C92C /* Sources */ = {
@@ -259,13 +243,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CBD33E182E3E79340089C92C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -273,11 +250,6 @@
 			isa = PBXTargetDependency;
 			target = CBD33DFB2E3E792E0089C92C /* Estalvia */;
 			targetProxy = CBD33E132E3E79330089C92C /* PBXContainerItemProxy */;
-		};
-		CBD33E1E2E3E79340089C92C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CBD33DFB2E3E792E0089C92C /* Estalvia */;
-			targetProxy = CBD33E1D2E3E79340089C92C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -382,7 +354,7 @@
 				DEVELOPMENT_TEAM = 8DURMPUBZ2;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -446,7 +418,7 @@
 				DEVELOPMENT_TEAM = 8DURMPUBZ2;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -507,44 +479,6 @@
 			};
 			name = Release;
 		};
-		CBD33E2E2E3E79340089C92C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8DURMPUBZ2;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alex.apostol.EstalviaUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Estalvia;
-			};
-			name = Debug;
-		};
-		CBD33E2F2E3E79340089C92C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8DURMPUBZ2;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alex.apostol.EstalviaUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Estalvia;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -575,16 +509,52 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CBD33E2D2E3E79340089C92C /* Build configuration list for PBXNativeTarget "EstalviaUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CBD33E2E2E3E79340089C92C /* Debug */,
-				CBD33E2F2E3E79340089C92C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CBAA413A2E50E42100F632A9 /* XCRemoteSwiftPackageReference "SmartLogging" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AlexApostolSource/SmartLogging";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
+		CBAA413D2E50E4C100F632A9 /* XCRemoteSwiftPackageReference "NetworkLayer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AlexApostolSource/NetworkLayer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.0;
+			};
+		};
+		CBDD3FA82E5A21AD00140B11 /* XCRemoteSwiftPackageReference "SwiftInject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AlexApostolSource/SwiftInject";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CBAA413B2E50E42100F632A9 /* SmartLogging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBAA413A2E50E42100F632A9 /* XCRemoteSwiftPackageReference "SmartLogging" */;
+			productName = SmartLogging;
+		};
+		CBAA413E2E50E4C100F632A9 /* NetworkLayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBAA413D2E50E4C100F632A9 /* XCRemoteSwiftPackageReference "NetworkLayer" */;
+			productName = NetworkLayer;
+		};
+		CBDD3FA92E5A21AD00140B11 /* SwiftInject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBDD3FA82E5A21AD00140B11 /* XCRemoteSwiftPackageReference "SwiftInject" */;
+			productName = SwiftInject;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CBD33DF42E3E792D0089C92C /* Project object */;
 }

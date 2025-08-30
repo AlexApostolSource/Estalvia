@@ -1,0 +1,33 @@
+{
+  "originHash" : "167bab01123a1c8a4c4cd2e71f0c24247bc80223f7ab3be4ba8a34895cb0af9f",
+  "pins" : [
+    {
+      "identity" : "networklayer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AlexApostolSource/NetworkLayer",
+      "state" : {
+        "revision" : "d2aab8b76aa7da84d633133d0ffa7957eeb0e732",
+        "version" : "2.3.0"
+      }
+    },
+    {
+      "identity" : "smartlogging",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AlexApostolSource/SmartLogging",
+      "state" : {
+        "revision" : "636ea3382be1318819fe5177abafc1c2fc6a2a70",
+        "version" : "2.1.0"
+      }
+    },
+    {
+      "identity" : "swiftinject",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AlexApostolSource/SwiftInject",
+      "state" : {
+        "revision" : "83a7ad70261860dc1c7442b1d45c4a8ef63bc0c5",
+        "version" : "2.0.1"
+      }
+    }
+  ],
+  "version" : 3
+}

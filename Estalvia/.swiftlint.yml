@@ -32,7 +32,7 @@ opt_in_rules:
 # 3. Umbrales y ajustes finos
 line_length:
   warning: 150
-  error: 150
+  error: 170
   ignores_comments: true
   ignores_urls: true
   ignores_interpolated_strings: true

@@ -31,7 +31,7 @@
 		CBD33E242E3E79340089C92C /* Exceptions for "Estalvia" folder in "Estalvia" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				SupportedFiles/Info.plist,
 			);
 			target = CBD33DFB2E3E792E0089C92C /* Estalvia */;
 		};
@@ -263,7 +263,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8DURMPUBZ2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Estalvia/Info.plist;
+				INFOPLIST_FILE = Estalvia/SupportedFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -294,7 +294,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8DURMPUBZ2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Estalvia/Info.plist;
+				INFOPLIST_FILE = Estalvia/SupportedFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

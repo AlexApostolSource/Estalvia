@@ -1,0 +1,57 @@
+# Build products
+build/
+DerivedData/
+Build/
+Build/Intermediates.noindex/
+
+# User data (local, never commit)
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.pbxuser
+*.xccheckout
+*.xcscmblueprint
+xcuserdata/
+
+# Swift Package Manager
+.swiftpm/
+.build/
+SourcePackages/
+Package.pins
+# Keep Package.resolved if you want exact dependency versions tracked
+Package.resolved
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/Build/
+
+# Accio
+Dependencies/
+.accio/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Archives & exports
+*.xcarchive
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Xcode Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# SwiftUI Previews
+*.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+
+# Misc
+*.swp
+*.swo
+*.DS_Store

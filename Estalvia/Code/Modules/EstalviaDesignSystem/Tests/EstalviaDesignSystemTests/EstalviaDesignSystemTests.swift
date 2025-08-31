@@ -1,5 +1,5 @@
-import XCTest
 @testable import EstalviaDesignSystem
+import XCTest
 
 final class EstalviaDesignSystemTests: XCTestCase {
     func testExample() throws {

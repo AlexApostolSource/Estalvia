@@ -35,7 +35,7 @@ public struct EstalviaTheme {
     public var cornerRadiusMedium: CGFloat = 8
     public var cornerRadiusLarge: CGFloat = 10
 
-    public var primaryColor: Color = .accentColor
+    public var primaryColor: Color = .estalviaPrimaryBlue
     public init() {}
 
     // Helper para consultar por size  👇
@@ -120,8 +120,6 @@ public extension View {
     }
 }
 
-
-// 6) Acceso “tipo librería” (opcional, si te gusta la sintaxis anterior)
 public extension SwiftUI.ButtonStyle where Self == EstalviaPrimaryButtonStyle {
     static func estalviaPrimary(size: EstalviaButtonSize = .medium) -> EstalviaPrimaryButtonStyle {
         EstalviaPrimaryButtonStyle(size: size)

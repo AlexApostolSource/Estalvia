@@ -16,18 +16,13 @@ let package = Package(
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
-         .plugin(
-         name: "EstalviaDesignSystemSwiftBuildToolPlugin",
-         capability: .buildTool(),
-         path: "Plugins/EstalviaDesignSystemSwiftBuildToolPlugin"
-         ),
         .target(
-            name: "EstalviaDesignSystem", plugins: [.plugin(name: "EstalviaDesignSystemSwiftBuildToolPlugin")]
+            name: "EstalviaDesignSystem",
+            resources: [.process("Resources")],
         ),
         .testTarget(
             name: "EstalviaDesignSystemTests",
-            dependencies: ["EstalviaDesignSystem"],
-            plugins: [.plugin(name: "EstalviaDesignSystemSwiftBuildToolPlugin")]
+            dependencies: ["EstalviaDesignSystem"]
         )
     ]
 )

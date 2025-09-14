@@ -1,0 +1,45 @@
+//
+//  EstalviaButtonTheme.swift
+//  EstalviaDesignSystem
+//
+//  Created by Alex.personal on 14/9/25.
+//
+
+import SwiftUI
+
+public enum EstalviaButtonTheme {
+    case small, medium, large
+    var padding: EdgeInsets {
+        switch self {
+        case .small:  return .init(top: 10, leading: 12, bottom: 10, trailing: 12)
+        case .medium: return .init(top: 15, leading: 16, bottom: 15, trailing: 16)
+        case .large:  return .init(top: 18, leading: 20, bottom: 18, trailing: 20)
+        }
+    }
+    var font: Font {
+        switch self {
+        case .small:
+            return .system(size: 12).bold()
+        case .medium:
+            return .system(size: 14, weight: .bold)
+        case .large:
+            return .system(size: 16, weight: .bold)
+        }
+    }
+
+    var cornerRadius: CGFloat {
+        switch self {
+        case .small:  return 6
+        case .medium: return 8
+        case .large:  return 10
+        }
+    }
+
+    var primaryColor: Color  {
+        return .estalviaPrimaryBlue
+    }
+
+    init() {
+        self = .large
+    }
+}

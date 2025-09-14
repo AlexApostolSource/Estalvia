@@ -29,9 +29,9 @@ public enum EstalviaButtonTheme {
 
     var cornerRadius: CGFloat {
         switch self {
-        case .small:  return 6
-        case .medium: return 8
-        case .large:  return 10
+        case .small:  return 12
+        case .medium: return 14
+        case .large:  return 16
         }
     }
 

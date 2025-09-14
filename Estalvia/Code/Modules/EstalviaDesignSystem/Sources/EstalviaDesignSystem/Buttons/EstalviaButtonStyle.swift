@@ -11,10 +11,12 @@ public struct EstalviaPrimaryButtonStyle: SwiftUI.ButtonStyle {
     @Environment(\.isEnabled) private var isEnabled
     private let size: EstalviaButtonTheme
     private let cornerRadiusOverride: CGFloat?
+    private let backgroundColorOverride: Color?
 
-    public init(size: EstalviaButtonTheme = .medium, cornerRadius: CGFloat? = nil) {
+    public init(size: EstalviaButtonTheme = .medium, cornerRadius: CGFloat? = nil, backgroundColorOverride: Color? = nil) {
         self.size = size
         self.cornerRadiusOverride = cornerRadius
+        self.backgroundColorOverride = backgroundColorOverride
     }
 
     public func makeBody(configuration: Configuration) -> some View {
@@ -26,7 +28,7 @@ public struct EstalviaPrimaryButtonStyle: SwiftUI.ButtonStyle {
             .frame(maxWidth: .infinity, minHeight: 44)     // área táctil mínima
             .background(
                 RoundedRectangle(cornerRadius: radius)
-                    .fill(theme.primaryColor)
+                    .fill(backgroundColorOverride ?? theme.primaryColor)
             )
             .foregroundStyle(.white)
             .contentShape(RoundedRectangle(cornerRadius: radius)) // hit test
@@ -38,8 +40,13 @@ public struct EstalviaPrimaryButtonStyle: SwiftUI.ButtonStyle {
 
 
 public extension View {
-    func estalviaPrimaryButton(size: EstalviaButtonTheme = .medium) -> some View {
-        self.buttonStyle(EstalviaPrimaryButtonStyle(size: size))
+    func estalviaPrimaryButton(size: EstalviaButtonTheme = .medium, color: Color? = nil) -> some View {
+        self.buttonStyle(
+            EstalviaPrimaryButtonStyle(
+                size: size,
+                backgroundColorOverride: color
+            )
+        )
     }
     func estalviaTheme(_ theme: EstalviaButtonTheme) -> some View {
         self.environment(\.estalviaTheme, theme)

@@ -14,9 +14,12 @@ struct ComponentsList: View {
             List {
                 NavigationLink(destination: EstalviaButtonView()) {
                     Text("Estalvia Button")
+                }
+                NavigationLink(destination: EstalviaTextPreview()) {
+                    Text("Estalvia Text")
+                }
                 }.navigationTitle("ComponentsList")
                     .navigationBarTitleDisplayMode(.inline)
-            }
         }
     }
 }

@@ -13,4 +13,5 @@ public extension Color {
     public static var estalviaPrimaryGreen: Color { Color("PrimaryGreen", bundle: .module) }
     public static var estalviaPrimaryRed:   Color { Color("PrimaryRed",   bundle: .module) }
     public static var estalviaPrimaryWhite: Color { Color("PrimaryWhite", bundle: .module) }
+    public static var estalviaPrimaryGray: Color { Color("PrimaryGray",  bundle: .module) }
 }

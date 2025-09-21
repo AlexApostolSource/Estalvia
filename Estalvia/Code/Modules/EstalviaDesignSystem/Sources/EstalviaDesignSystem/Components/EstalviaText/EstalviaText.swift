@@ -59,9 +59,8 @@ public struct EstalviaText: ViewModifier {
         case .body:
             content.foregroundStyle(color).font(.system(size: fontSize ?? 14))
         case .caption:
-            content.foregroundStyle(color)
+            content.foregroundStyle(textColor ?? .estalviaPrimaryGray)
                 .font(.system(size: fontSize ?? 12))
-                .foregroundStyle(Color.estalviaPrimaryGray)
         case .amountPrimary:
             content.foregroundStyle(color).monospacedDigit()
                 .contentTransition(.numericText())
@@ -71,7 +70,7 @@ public struct EstalviaText: ViewModifier {
     }
 }
 
-public extension View {
+public extension Text {
     func estalviaTextView(
         _ type: EstalviaTextViewStyle,
         color: Color? = nil,

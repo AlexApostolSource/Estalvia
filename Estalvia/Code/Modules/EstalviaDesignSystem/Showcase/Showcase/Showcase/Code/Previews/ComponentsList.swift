@@ -18,6 +18,9 @@ struct ComponentsList: View {
                 NavigationLink(destination: EstalviaTextPreview()) {
                     Text("Estalvia Text")
                 }
+                NavigationLink(destination: EstalviaTextFieldPreview()) {
+                    Text("Estalvia TextField")
+                }
                 }.navigationTitle("ComponentsList")
                     .navigationBarTitleDisplayMode(.inline)
         }

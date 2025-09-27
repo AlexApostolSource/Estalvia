@@ -189,8 +189,5 @@ public struct EstalviaTextField<Leading: View, Trailing: View>: View {
             }
         }
         .accessibilityElement(children: .combine)
-//        .toolbar {
-//            ToolbarItemGroup(placement: .keyboard) { Spacer(); Button("Hecho") { focused = false } }
-//        }
     }
 }

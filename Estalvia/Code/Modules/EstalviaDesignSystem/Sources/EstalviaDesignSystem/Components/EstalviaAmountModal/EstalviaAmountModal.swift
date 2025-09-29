@@ -11,8 +11,11 @@ public struct EstalviaAmountModal: View {
     private let titleLabel: String
     private let amountTitle: String
     private let description: String
+    private let leftButtonTitle: String
+    private let rightButtonTitle: String
     @Binding private var descriptionBinding: String
     @Binding private var amountText: String
+    @Environment(\.dismiss) private var dismiss
     public var body: some View {
         VStack(alignment: .center) {
             Text(titleLabel).estalviaTextView(.title)
@@ -28,12 +31,12 @@ public struct EstalviaAmountModal: View {
             }.padding(EdgeInsets(top: 32, leading: 16, bottom: 0, trailing: 16))
 
             HStack {
-                Button("Cancelar") {
-
+                Button(leftButtonTitle) {
+                    dismiss()
                 }.estalviaPrimaryButton(size: .large, color: .estalviaPrimaryRed)
                 Spacer()
-                Button("Acceptar") {
-
+                Button(rightButtonTitle) {
+                    dismiss()
                 }.estalviaPrimaryButton(
                     size: .large,
                     color: .estalviaPrimaryBlue
@@ -45,6 +48,8 @@ public struct EstalviaAmountModal: View {
     init(
         titleLabel: String,
         amountTitle: String,
+        leftButtonTitle: String,
+        rightButtonTitle: String,
         amountText: Binding<String>,
         descriptionBinding: Binding<String>,
         description: String
@@ -54,6 +59,8 @@ public struct EstalviaAmountModal: View {
         self._amountText = amountText
         self._descriptionBinding = descriptionBinding
         self.description = description
+        self.leftButtonTitle = leftButtonTitle
+        self.rightButtonTitle = rightButtonTitle
     }
 }
 
@@ -69,10 +76,17 @@ public struct EstalviaAmountModalPreview: View {
         EstalviaAmountModal(
             titleLabel: "Title",
             amountTitle: "Importe",
+            leftButtonTitle: "Cancelar",
+            rightButtonTitle: "Acceptar",
             amountText: $text,
             descriptionBinding: $description,
             description: "Description"
 
         )
+    }
+
+    public init(text: String = "", description: String = "") {
+        self.text = text
+        self.description = description
     }
 }

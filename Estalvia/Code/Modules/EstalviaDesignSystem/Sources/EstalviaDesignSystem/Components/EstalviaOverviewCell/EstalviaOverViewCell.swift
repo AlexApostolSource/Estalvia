@@ -7,58 +7,106 @@
 
 import SwiftUI
 
+public struct EstalviaOverViewCellConfig {
+	public let titleLabel: String
+	public let subtitleLabel: String
+	public let initialAmount: Decimal
+	public let remainingAmount: Decimal
+	public var onEditInitial: @MainActor () -> Void
+	public var onEditActual: @MainActor () -> Void
+	public let currencyHelper: CurrencySymbolHelperProtocol
+
+	public init(
+		titleLabel: String,
+		subtitleLabel: String,
+		initialAmount: Decimal,
+		remainingAmount: Decimal,
+		currencyHelper: CurrencySymbolHelperProtocol = CurrencySymbolHelper(),
+		onEditInitial: @escaping @MainActor () -> Void = {},
+		onEditActual:  @escaping @MainActor () -> Void = {}
+	) {
+		self.titleLabel = titleLabel
+		self.subtitleLabel = subtitleLabel
+		self.initialAmount = initialAmount
+		self.remainingAmount = remainingAmount
+		self.currencyHelper = currencyHelper
+		self.onEditInitial = onEditInitial
+		self.onEditActual  = onEditActual
+	}
+}
+
 public struct EstalviaOverViewCell: View {
-    public let titleLabel: String
-    public let subtitleLabel: String
-    public let initialAmount: String
-    public let remainingAmount: String
-    private let currencyHelper: CurrencySymbolHelperProtocol = CurrencySymbolHelper()
+	private let config: EstalviaOverViewCellConfig
 
     public var body: some View {
         VStack(alignment: .leading) {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(titleLabel).estalviaTextView(.subtitle)
-                    Text("\(initialAmount)\(currencyHelper.symbol())")
+					Text(
+						config.titleLabel
+					).estalviaTextView(.subtitle)
+					Text(
+						"\(config.initialAmount)\(config.currencyHelper.symbol())"
+					)
                         .estalviaTextView(.amountPrimary).bold()
                 }
                 Spacer()
-                Image(systemName: "pencil")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 24, height: 24)
+				Button {
+					config.onEditInitial()
+				} label: {
+					Image(systemName: "pencil")
+						.resizable()
+						.scaledToFit()
+						.frame(width: 20, height: 20)
+						.foregroundStyle(Color.estalviaPrimaryBlack)
+				}
+
             }
             HStack {
                 VStack(alignment: .leading) {
-                    Text(subtitleLabel).estalviaTextView(.subtitle)
-                    Text("\(remainingAmount)\(currencyHelper.symbol())")
+					Text(config.subtitleLabel).estalviaTextView(.subtitle)
+					Text("\(config.remainingAmount)\(config.currencyHelper.symbol())")
                         .estalviaTextView(.amountPrimary).bold()
                 }
                 Spacer()
-                Image(systemName: "pencil")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 24, height: 24)
-            }
-            Spacer()
-        }.padding(EdgeInsets(top: 32, leading: 24, bottom: 32, trailing: 24))
+				Button {
+					config.onEditActual()
+				} label: {
+					Image(systemName: "pencil")
+						.resizable()
+						.scaledToFit()
+						.frame(width: 20, height: 20)
+						.foregroundStyle(Color.estalviaPrimaryBlack)
+				}
+			}.padding(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
+
+		}.padding(EdgeInsets(top: 32, leading: 24, bottom: 32, trailing: 24)).overlay {
+			RoundedRectangle(cornerRadius: 16)
+				.stroke(Color.estalviaPrimaryGray, lineWidth: 1)
+		}
 
     }
+
+	public init(config: EstalviaOverViewCellConfig) {
+		self.config = config
+	}
 }
 
 public struct EstalviaOverViewCellPreview: View {
     public var body: some View {
-        EstalviaOverViewCell(
-            titleLabel: "Capital inicial",
-            subtitleLabel: "Saldo Actual",
-            initialAmount: "2500",
-            remainingAmount: "2500"
-        )
+		EstalviaOverViewCell(
+			config: EstalviaOverViewCellConfig(
+			titleLabel: "Capital inicial",
+			subtitleLabel: "Saldo Actual",
+			initialAmount: 2500,
+			remainingAmount: 2500, onEditInitial: {
+				print("initial amount")
+			}) {
+				print("actual amount")
+			})
     }
 
-    public init() {
-
-    }
+    public init() {}
 }
 
 #Preview {

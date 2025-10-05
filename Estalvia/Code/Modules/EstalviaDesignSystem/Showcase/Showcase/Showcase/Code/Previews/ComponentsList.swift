@@ -27,6 +27,9 @@ struct ComponentsList: View {
                 NavigationLink(destination: EstalviaAmountModalPreview()) {
                     Text("Estalvia AmountModal")
                 }
+				NavigationLink(destination: EstalviaExpenseCellPreview()) {
+					Text("Estalvia EstalviaExpenseCell")
+				}
                 }.navigationTitle("ComponentsList")
                     .navigationBarTitleDisplayMode(.inline)
         }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public enum EstalviaButtonTheme {
+public enum EstalviaButtonTheme: Sendable {
     case small, medium, large
     var padding: EdgeInsets {
         switch self {

@@ -36,6 +36,7 @@ public struct EstalviaText: ViewModifier {
     public let fontSize: CGFloat?
     public let textColor: Color?
     public let type: EstalviaTextViewStyle
+	private let currency = CurrencySymbolHelper().symbol()
 
     public init(
         fontSize: CGFloat?,
@@ -62,7 +63,10 @@ public struct EstalviaText: ViewModifier {
             content.foregroundStyle(textColor ?? .estalviaPrimaryGray)
                 .font(.system(size: fontSize ?? 12))
         case .amountPrimary:
-            content.foregroundStyle(color).monospacedDigit()
+				HStack(spacing: 1) {
+					content
+					Text(currency)
+				}.font(.system(size: fontSize ?? 24, weight: .bold)).foregroundStyle(color).monospacedDigit()
                 .contentTransition(.numericText())
                 .lineLimit(1)
                 .minimumScaleFactor(0.85)
@@ -70,6 +74,7 @@ public struct EstalviaText: ViewModifier {
     }
 }
 
+@MainActor
 public extension Text {
     func estalviaTextView(
         _ type: EstalviaTextViewStyle,

@@ -14,14 +14,12 @@ public struct EstalviaOverViewCellConfig {
 	public let remainingAmount: Decimal
 	public var onEditInitial: @MainActor () -> Void
 	public var onEditActual: @MainActor () -> Void
-	public let currencyHelper: CurrencySymbolHelperProtocol
 
 	public init(
 		titleLabel: String,
 		subtitleLabel: String,
 		initialAmount: Decimal,
 		remainingAmount: Decimal,
-		currencyHelper: CurrencySymbolHelperProtocol = CurrencySymbolHelper(),
 		onEditInitial: @escaping @MainActor () -> Void = {},
 		onEditActual:  @escaping @MainActor () -> Void = {}
 	) {
@@ -29,7 +27,6 @@ public struct EstalviaOverViewCellConfig {
 		self.subtitleLabel = subtitleLabel
 		self.initialAmount = initialAmount
 		self.remainingAmount = remainingAmount
-		self.currencyHelper = currencyHelper
 		self.onEditInitial = onEditInitial
 		self.onEditActual  = onEditActual
 	}
@@ -46,8 +43,7 @@ public struct EstalviaOverViewCell: View {
 						config.titleLabel
 					).estalviaTextView(.subtitle)
 					Text(
-						"\(config.initialAmount)\(config.currencyHelper.symbol())"
-					)
+						"\(config.initialAmount)")
                         .estalviaTextView(.amountPrimary).bold()
                 }
                 Spacer()
@@ -65,7 +61,7 @@ public struct EstalviaOverViewCell: View {
             HStack {
                 VStack(alignment: .leading) {
 					Text(config.subtitleLabel).estalviaTextView(.subtitle)
-					Text("\(config.remainingAmount)\(config.currencyHelper.symbol())")
+					Text("\(config.remainingAmount)")
                         .estalviaTextView(.amountPrimary).bold()
                 }
                 Spacer()

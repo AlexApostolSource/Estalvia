@@ -30,6 +30,9 @@ struct ComponentsList: View {
 				NavigationLink(destination: EstalviaExpenseCellPreview()) {
 					Text("Estalvia EstalviaExpenseCell")
 				}
+				NavigationLink(destination: EstalviaExpenseTypeCellPreview()) {
+					Text("EstalviaExpenseType")
+				}
                 }.navigationTitle("ComponentsList")
                     .navigationBarTitleDisplayMode(.inline)
         }

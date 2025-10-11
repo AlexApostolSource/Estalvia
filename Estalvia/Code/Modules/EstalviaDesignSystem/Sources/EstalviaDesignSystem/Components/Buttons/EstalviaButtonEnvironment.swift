@@ -7,7 +7,7 @@
 import SwiftUI
 
 private struct EstalviaThemeKey: EnvironmentKey {
-    static let defaultValue = EstalviaButtonTheme()
+	static let defaultValue = EstalviaButtonTheme()
     init() {}
 }
 

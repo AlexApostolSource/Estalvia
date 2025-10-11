@@ -8,21 +8,18 @@
 import SwiftUI
 
 public protocol EstalviaExpenseProtocol {
-	var format: String { get }
 	var color: Color { get }
 	var title: String { get }
+	var amount: Decimal { get }
 }
 
 public struct EstalviaExpense: EstalviaExpenseProtocol {
-	public var format: String
 	public let amount: Decimal
 	public var color: Color
 	public let symbol: String?
 	public var title: String
-	private let currencyHelper: CurrencySymbolHelperProtocol = CurrencySymbolHelper()
 
 	init(amount: Decimal, color: Color, symbol: String? = nil, title: String = "Default title") {
-		self.format = "\(symbol ?? "")\(amount)\(currencyHelper.symbol())"
 		self.amount = amount
 		self.symbol = symbol
 		self.color = color
@@ -47,18 +44,18 @@ public struct EstalviaExpenseCell: View {
 					Text(formatter.string(from: date)).estalviaTextView(.subtitle)
 				}.padding(EdgeInsets(top: 0, leading: 22, bottom: 0, trailing: 0))
 				Spacer()
-				Text(amount.format).estalviaTextView(.amountPrimary, color: amount.color)
+				Text("\(amount.amount)").estalviaTextView(.amountPrimary, color: amount.color)
 			}.padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
 			Divider().frame(height: 1 / UIScreen.main.scale)     .padding(16).foregroundStyle(Color.estalviaPrimaryBlack)
 			HStack {
 				VStack(alignment: .leading) {
 					Text(initialAmount.title).estalviaTextView(.subtitle)
-					Text(initialAmount.format).estalviaTextView(.amountPrimary, color: initialAmount.color)
+					Text("\(initialAmount.amount)").estalviaTextView(.amountPrimary, color: initialAmount.color)
 				}
 				Spacer()
 				VStack(alignment: .trailing) {
 					Text(remainingAmount.title).estalviaTextView(.subtitle)
-					Text(remainingAmount.format).estalviaTextView(.amountPrimary, color: remainingAmount.color)
+					Text("\(remainingAmount.amount)").estalviaTextView(.amountPrimary, color: remainingAmount.color)
 				}
 			}.padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
 		}.padding(EdgeInsets(top: 32, leading: 0, bottom: 32, trailing: 0)).overlay {

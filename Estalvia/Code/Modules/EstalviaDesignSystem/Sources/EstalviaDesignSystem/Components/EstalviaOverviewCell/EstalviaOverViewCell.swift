@@ -76,10 +76,17 @@ public struct EstalviaOverViewCell: View {
 				}
 			}.padding(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
 
-		}.padding(EdgeInsets(top: 32, leading: 24, bottom: 32, trailing: 24)).overlay {
-			RoundedRectangle(cornerRadius: 16)
-				.stroke(Color.estalviaPrimaryGray, lineWidth: 1)
-		}
+		}.padding(
+			EdgeInsets(
+				top: 32,
+				leading: 24,
+				bottom: 32,
+				trailing: 24
+			)
+		).glassEffect(
+			.regular.tint(.estalviaSecondaryBlue).interactive(),
+			in: RoundedRectangle(cornerRadius: 16)
+		)
 
     }
 

@@ -26,12 +26,9 @@ public struct EstalviaExpenseTypeCell: View {
 			Spacer()
 		}.padding(EdgeInsets(top: 22, leading: 20, bottom: 22, trailing: 0))
 			.glassEffect(
-			.regular.tint(Color.estalviaSecondaryBlue),
+				.regular.tint(Color.estalviaSecondaryBlue).interactive(),
 			in: RoundedRectangle(cornerRadius: 16)
-		).overlay {
-			RoundedRectangle(cornerRadius: 16)
-				.stroke(Color.estalviaSecondaryBlue, lineWidth: 1)
-		}
+			)
 	}
 
 	public init(config: EstalviaExpenseTypeCellConfig) {

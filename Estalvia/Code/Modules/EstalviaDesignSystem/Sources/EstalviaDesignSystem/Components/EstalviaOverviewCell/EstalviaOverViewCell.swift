@@ -10,16 +10,16 @@ import SwiftUI
 public struct EstalviaOverViewCellConfig {
 	public let titleLabel: String
 	public let subtitleLabel: String
-	public let initialAmount: Decimal
-	public let remainingAmount: Decimal
+	public let initialAmount: String
+	public let remainingAmount: String
 	public var onEditInitial: @MainActor () -> Void
 	public var onEditActual: @MainActor () -> Void
 
 	public init(
 		titleLabel: String,
 		subtitleLabel: String,
-		initialAmount: Decimal,
-		remainingAmount: Decimal,
+		initialAmount: String,
+		remainingAmount: String,
 		onEditInitial: @escaping @MainActor () -> Void = {},
 		onEditActual: @escaping @MainActor () -> Void = {}
 	) {
@@ -43,7 +43,7 @@ public struct EstalviaOverViewCell: View {
 						config.titleLabel
 					).estalviaTextView(.subtitle)
 					Text(
-						"\(config.initialAmount)")
+						config.initialAmount)
                         .estalviaTextView(.amountPrimary).bold()
                 }
                 Spacer()
@@ -61,7 +61,7 @@ public struct EstalviaOverViewCell: View {
             HStack {
                 VStack(alignment: .leading) {
 					Text(config.subtitleLabel).estalviaTextView(.subtitle)
-					Text("\(config.remainingAmount)")
+					Text(config.remainingAmount)
                         .estalviaTextView(.amountPrimary).bold()
                 }
                 Spacer()
@@ -101,8 +101,8 @@ public struct EstalviaOverViewCellPreview: View {
 			config: EstalviaOverViewCellConfig(
 			titleLabel: "Capital inicial",
 			subtitleLabel: "Saldo Actual",
-			initialAmount: 2500,
-			remainingAmount: 2500, onEditInitial: {
+			initialAmount: EstalviaNumberFormatter.format(2500),
+			remainingAmount: EstalviaNumberFormatter.format(2500), onEditInitial: {
 				print("initial amount")
 			}) {
 				print("actual amount")

@@ -10,18 +10,16 @@ import SwiftUI
 public protocol EstalviaExpenseProtocol {
 	var color: Color { get }
 	var title: String { get }
-	var amount: Decimal { get }
+	var amount: String { get }
 }
 
 public struct EstalviaExpense: EstalviaExpenseProtocol {
-	public let amount: Decimal
+	public let amount: String
 	public var color: Color
-	public let symbol: String?
 	public var title: String
 
-	init(amount: Decimal, color: Color, symbol: String? = nil, title: String = "Default title") {
+	init(amount: String, color: Color, title: String = "Default title") {
 		self.amount = amount
-		self.symbol = symbol
 		self.color = color
 		self.title = title
 	}
@@ -44,7 +42,7 @@ public struct EstalviaExpenseCell: View {
 					Text(formatter.string(from: date)).estalviaTextView(.subtitle)
 				}.padding(EdgeInsets(top: 0, leading: 22, bottom: 0, trailing: 0))
 				Spacer()
-				Text("\(amount.amount)").estalviaTextView(.amountPrimary, color: amount.color)
+				Text(amount.amount).estalviaTextView(.amountPrimary, color: amount.color)
 			}.padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
 			Divider().frame(height: 1 / UIScreen.main.scale).padding(16).foregroundStyle(Color.estalviaPrimaryBlack)
 			HStack {
@@ -73,17 +71,16 @@ public struct EstalviaExpenseCellPreview: View {
 			expenseTitle: "Alquiler",
 			date: Date.now,
 			amount: EstalviaExpense(
-				amount: 2500,
-				color: .estalviaPrimaryRed,
-				symbol: "-"
+				amount: EstalviaNumberFormatter.format(2500000),
+				color: .estalviaPrimaryRed
 			),
 			initialAmount: EstalviaExpense(
-				amount: 2500,
+				amount: EstalviaNumberFormatter.format(-2500),
 				color: .estalviaPrimaryBlack,
 				title: "Capital antes"
 			),
 			remainingAmount: EstalviaExpense(
-				amount: 2500,
+				amount: EstalviaNumberFormatter.format(2500),
 				color: .estalviaPrimaryGreen,
 				title: "Capital despues"
 			),

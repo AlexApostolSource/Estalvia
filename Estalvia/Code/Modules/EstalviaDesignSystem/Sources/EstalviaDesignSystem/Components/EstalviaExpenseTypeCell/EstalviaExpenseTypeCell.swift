@@ -9,7 +9,7 @@ import SwiftUI
 
 public struct EstalviaExpenseTypeCellConfig {
 	public let title: String
-	public let amount: Decimal
+	public let amount: String
 	public let description: String
 	let currencyHelper = CurrencySymbolHelper.symbol()
 }
@@ -41,7 +41,7 @@ public struct EstalviaExpenseTypeCellPreview: View {
 		EstalviaExpenseTypeCell(
 			config: EstalviaExpenseTypeCellConfig(
 				title: "Gasto Personal",
-				amount: 11250,
+				amount: EstalviaNumberFormatter.format(11250),
 				description: "Saldo disponible"
 			)
 		)

@@ -102,11 +102,13 @@ public struct EstalviaOverViewCellPreview: View {
 			titleLabel: "Capital inicial",
 			subtitleLabel: "Saldo Actual",
 			initialAmount: EstalviaNumberFormatter.format(2500),
-			remainingAmount: EstalviaNumberFormatter.format(2500), onEditInitial: {
-				print("initial amount")
-			}) {
-				print("actual amount")
-			})
+			remainingAmount: EstalviaNumberFormatter.format(2500),
+			onEditInitial: {
+					print("Initial Edit")
+			},
+			onEditActual: {
+				print("Actual Edit")
+			}))
     }
 
     public init() {}

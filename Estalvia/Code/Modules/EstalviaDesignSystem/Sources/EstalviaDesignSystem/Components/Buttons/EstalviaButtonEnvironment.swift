@@ -11,7 +11,6 @@ private struct EstalviaThemeKey: EnvironmentKey {
     init() {}
 }
 
-
 public extension EnvironmentValues {
     var estalviaTheme: EstalviaButtonTheme {
         get { self[EstalviaThemeKey.self] }

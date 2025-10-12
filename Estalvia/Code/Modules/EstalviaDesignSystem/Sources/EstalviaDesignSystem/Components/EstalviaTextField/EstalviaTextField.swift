@@ -61,7 +61,6 @@ public struct EstalviaTextFieldPreview: View {
     EstalviaTextFieldPreview()
 }
 
-
 // 1) Tokens de estilo para todo el DS
 public struct TextFieldTokens {
     var cornerRadius: CGFloat = 12
@@ -95,10 +94,10 @@ public struct EstalviaTextField<Leading: View, Trailing: View>: View {
     let title: String
     @Binding var text: String
     var placeholder: String = ""
-    var helper: String? = nil
-    var error: String? = nil
+    var helper: String?
+    var error: String?
     var keyboard: UIKeyboardType = .default
-    var textContentType: UITextContentType? = nil
+    var textContentType: UITextContentType?
     var isSecure: Bool = false
     var autocapitalization: TextInputAutocapitalization = .sentences
     var autocorrectionDisabled: Bool = false

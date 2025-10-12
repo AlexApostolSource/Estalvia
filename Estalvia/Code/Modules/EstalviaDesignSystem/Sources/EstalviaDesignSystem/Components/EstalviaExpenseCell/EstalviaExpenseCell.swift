@@ -46,7 +46,7 @@ public struct EstalviaExpenseCell: View {
 				Spacer()
 				Text("\(amount.amount)").estalviaTextView(.amountPrimary, color: amount.color)
 			}.padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-			Divider().frame(height: 1 / UIScreen.main.scale)     .padding(16).foregroundStyle(Color.estalviaPrimaryBlack)
+			Divider().frame(height: 1 / UIScreen.main.scale).padding(16).foregroundStyle(Color.estalviaPrimaryBlack)
 			HStack {
 				VStack(alignment: .leading) {
 					Text(initialAmount.title).estalviaTextView(.subtitle)
@@ -66,7 +66,7 @@ public struct EstalviaExpenseCell: View {
 }
 
 public struct EstalviaExpenseCellPreview: View {
-	let df: DateFormatter
+	let dateFormatter: DateFormatter
 	public var body: some View {
 		EstalviaExpenseCell(
 			image: .init(systemName: "house"),
@@ -87,16 +87,16 @@ public struct EstalviaExpenseCellPreview: View {
 				color: .estalviaPrimaryGreen,
 				title: "Capital despues"
 			),
-			formatter: df
+			formatter: dateFormatter
 		)
 	}
 
 	public init() {
-		self.df = DateFormatter()
-		df.calendar = .autoupdatingCurrent
-		df.locale   = .autoupdatingCurrent
-		df.timeZone = .autoupdatingCurrent
-		df.dateFormat = "dd MMM, yyyy"
+		self.dateFormatter = DateFormatter()
+		dateFormatter.calendar = .autoupdatingCurrent
+		dateFormatter.locale   = .autoupdatingCurrent
+		dateFormatter.timeZone = .autoupdatingCurrent
+		dateFormatter.dateFormat = "dd MMM, yyyy"
 	}
 }
 

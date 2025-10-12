@@ -8,11 +8,11 @@
 import SwiftUI
 
 public extension Color {
-    public static var estalviaPrimaryBlack: Color { Color("PrimaryBlack", bundle: .module) }
-    public static var estalviaPrimaryBlue:  Color { Color("PrimaryBlue",  bundle: .module) }
-    public static var estalviaPrimaryGreen: Color { Color("PrimaryGreen", bundle: .module) }
-    public static var estalviaPrimaryRed:   Color { Color("PrimaryRed",   bundle: .module) }
-    public static var estalviaPrimaryWhite: Color { Color("PrimaryWhite", bundle: .module) }
-    public static var estalviaPrimaryGray: Color { Color("PrimaryGray",  bundle: .module) }
-	public static var estalviaSecondaryBlue: Color { Color("SecondaryBlue",  bundle: .module) }
+	static var estalviaPrimaryBlack: Color { Color("PrimaryBlack", bundle: .module) }
+	static var estalviaPrimaryBlue: Color { Color("PrimaryBlue", bundle: .module) }
+	static var estalviaPrimaryGreen: Color { Color("PrimaryGreen", bundle: .module) }
+	static var estalviaPrimaryRed: Color { Color("PrimaryRed", bundle: .module) }
+	static var estalviaPrimaryWhite: Color { Color("PrimaryWhite", bundle: .module) }
+	static var estalviaPrimaryGray: Color { Color("PrimaryGray", bundle: .module) }
+	static var estalviaSecondaryBlue: Color { Color("SecondaryBlue", bundle: .module) }
 }

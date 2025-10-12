@@ -21,7 +21,7 @@ public struct EstalviaOverViewCellConfig {
 		initialAmount: Decimal,
 		remainingAmount: Decimal,
 		onEditInitial: @escaping @MainActor () -> Void = {},
-		onEditActual:  @escaping @MainActor () -> Void = {}
+		onEditActual: @escaping @MainActor () -> Void = {}
 	) {
 		self.titleLabel = titleLabel
 		self.subtitleLabel = subtitleLabel

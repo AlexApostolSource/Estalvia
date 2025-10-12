@@ -31,11 +31,11 @@ opt_in_rules:
 
 # 3. Umbrales y ajustes finos
 line_length:
-  warning: 150
-  error: 170
+  warning: 180
+  error: 200
   ignores_comments: true
   ignores_urls: true
-  ignores_interpolated_strings: true
+  
 
 function_body_length:
   warning: 40

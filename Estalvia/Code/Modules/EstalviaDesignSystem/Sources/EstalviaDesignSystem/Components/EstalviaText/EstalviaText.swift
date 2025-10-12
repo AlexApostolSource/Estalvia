@@ -36,7 +36,7 @@ public struct EstalviaText: ViewModifier {
     public let fontSize: CGFloat?
     public let textColor: Color?
     public let type: EstalviaTextViewStyle
-	private let currency = CurrencySymbolHelper().symbol()
+	private let currency = CurrencySymbolHelper.symbol()
 
     public init(
         fontSize: CGFloat?,

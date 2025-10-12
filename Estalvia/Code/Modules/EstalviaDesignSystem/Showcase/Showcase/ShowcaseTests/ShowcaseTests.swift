@@ -5,8 +5,8 @@
 //  Created by Alex.personal on 31/8/25.
 //
 
-import XCTest
 @testable import Showcase
+import XCTest
 
 final class ShowcaseTests: XCTestCase {
 

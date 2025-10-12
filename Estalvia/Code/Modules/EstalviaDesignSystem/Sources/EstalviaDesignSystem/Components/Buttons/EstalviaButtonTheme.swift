@@ -35,7 +35,7 @@ public enum EstalviaButtonTheme: Sendable {
         }
     }
 
-    var primaryColor: Color  {
+    var primaryColor: Color {
         return .estalviaPrimaryBlue
     }
 

@@ -1,20 +1,18 @@
 import Foundation
 
 public protocol CurrencySymbolHelperProtocol {
-    func code() -> String
-    func symbol() -> String
+    static func code() -> String
+    static func symbol() -> String
 }
 
 public struct CurrencySymbolHelper: CurrencySymbolHelperProtocol {
-    private let formatter = NumberFormatter()
-    public func code() -> String {
+    private static let formatter = NumberFormatter()
+    public static func code() -> String {
             return Locale.autoupdatingCurrent.currency?.identifier
-            ?? Locale.autoupdatingCurrent.currencyCode
-            ?? ""
+            ?? Locale.autoupdatingCurrent.identifier
     }
 
-
-    public func symbol() -> String {
+    public static func symbol() -> String {
         formatter.numberStyle = .currency
         formatter.currencyCode = code()
         return formatter.currencySymbol ?? code()
@@ -22,4 +20,3 @@ public struct CurrencySymbolHelper: CurrencySymbolHelperProtocol {
 
 	public init () {}
 }
-

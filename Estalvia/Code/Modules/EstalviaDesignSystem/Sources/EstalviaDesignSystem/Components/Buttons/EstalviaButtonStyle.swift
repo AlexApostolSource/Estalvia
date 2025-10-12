@@ -38,7 +38,6 @@ public struct EstalviaPrimaryButtonStyle: SwiftUI.ButtonStyle {
     }
 }
 
-
 public extension View {
     func estalviaPrimaryButton(size: EstalviaButtonTheme = .medium, color: Color? = nil) -> some View {
         self.buttonStyle(

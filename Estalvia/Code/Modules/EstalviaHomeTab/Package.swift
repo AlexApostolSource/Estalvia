@@ -11,7 +11,7 @@ let package = Package(
         .library(
             name: "EstalviaHomeTab",
             targets: ["EstalviaHomeTab"]
-        ),
+        )
     ],
 	dependencies: [.package(name: "EstalviaDesignSystem", path: "../EstalviaDesignSystem/")],
     targets: [
@@ -24,6 +24,6 @@ let package = Package(
         .testTarget(
             name: "EstalviaHomeTabTests",
             dependencies: ["EstalviaHomeTab"]
-        ),
+        )
     ]
 )

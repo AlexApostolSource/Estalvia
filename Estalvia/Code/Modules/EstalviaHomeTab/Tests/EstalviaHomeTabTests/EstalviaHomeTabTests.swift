@@ -1,5 +1,5 @@
-import XCTest
 @testable import EstalviaHomeTab
+import XCTest
 
 final class EstalviaHomeTabTests: XCTestCase {
     func testExample() throws {

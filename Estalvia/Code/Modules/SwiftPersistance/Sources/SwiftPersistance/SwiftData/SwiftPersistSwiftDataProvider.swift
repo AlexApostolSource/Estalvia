@@ -5,6 +5,7 @@
 //  Created by Alex.personal on 25/10/25.
 //
 import SwiftData
+import Foundation
 
 // Typealias that constrains repository operations to SwiftData models.
 /// All persisted models must be annotated with `@Model`, which conform to `PersistentModel`.
@@ -29,7 +30,7 @@ public protocol SwiftPersistanceSwiftData {
 		/// - Returns: The first stored instance of `T`.
 		/// - Throws: `SwiftPersistSwiftDataProviderError.noEntityFound(model:)`
 		///           if the store has no entities of type `T`, or fetch errors from SwiftData.
-	func getFirst<T>() throws -> T where T: EstalviaSwiftDataSourceEntity
+	func getFirst<T>(sortBy: [SortDescriptor<T>]) throws -> T where T: EstalviaSwiftDataSourceEntity
 
 		/// Returns **all** elements for the requested type.
 		///
@@ -46,7 +47,35 @@ public protocol SwiftPersistanceSwiftData {
 		/// - Throws: Any error thrown by `ModelContext.save()`.
 	func delete<T>(_ entity: T) throws where T: EstalviaSwiftDataSourceEntity
 
-	func fetch<T>(_ descriptor: FetchDescriptor<T>) throws -> T? where T: EstalviaSwiftDataSourceEntity
+	/// Returns the **first** record of type `T` matching the given `FetchDescriptor`.
+	///
+	/// This method performs a fetch on the underlying `ModelContext` and returns only
+	/// the **first** matching element (or `nil` if there are no results). Use it when
+	/// you expect zero or one element. For collections, prefer `getAll()`.
+	///
+	/// - Parameter descriptor: A `FetchDescriptor<T>` defining `predicate`, `sortBy`,
+	///   `fetchOffset`, and/or `fetchLimit`. For best performance, set `fetchLimit = 1`
+	///   when you only need existence or the first result.
+	/// - Returns: The first entity of type `T`, or `nil` if no match is found.
+	/// - Throws: Any error thrown by `ModelContext.fetch(_:)`.
+	/// - Effects: Read-only; does not mutate the context.
+	/// - Concurrency: Call from the persistence actor that owns the context. Does not
+	///   block the main thread.
+	/// - Complexity: Approximately `O(k log k)` with sorting (where *k* is the number
+	///   of items passing the predicate) or `O(k)` without sorting. Use a selective
+	///   predicate and `fetchLimit = 1` to minimize *k*.
+	/// - Important: On large stores, **always** cap with `fetchLimit = 1` to avoid
+	///   materializing unnecessary rows when only one element is needed.
+	/// - SeeAlso: `getAll()`
+	///
+	/// ### Example
+	/// ```swift
+	/// var d = FetchDescriptor<User>()
+	/// d.predicate = #Predicate { $0.name == "Alex" }
+	/// d.fetchLimit = 1
+	/// let user: User? = try provider.fetch(d)
+	/// ```
+	func fetch<T>(_ descriptor: FetchDescriptor<T>) throws -> T where T: EstalviaSwiftDataSourceEntity
 }
 
 
@@ -66,19 +95,24 @@ public struct SwiftPersistSwiftDataProvider: SwiftPersistanceSwiftData {
 		try context.save()
 	}
 
-	public func fetch<T>(_ descriptor: FetchDescriptor<T>) throws -> T? where T: EstalviaSwiftDataSourceEntity {
-		try context.fetch(descriptor).first
-	}
-
-	public func getFirst<T>() throws -> T where T: EstalviaSwiftDataSourceEntity {
-		var description = FetchDescriptor<T>()
-		description.fetchLimit = 1
-		guard let first = try context.fetch(description).first else {
+	public func fetch<T>(_ descriptor: FetchDescriptor<T>) throws -> T where T: EstalviaSwiftDataSourceEntity {
+		var descriptor = descriptor
+		descriptor.fetchLimit = 1
+		guard let entity = try? context.fetch(descriptor).first else {
 			throw SwiftPersistSwiftDataProviderError.noEntityFound(model: "\(T.self)")
 		}
-		return first
+		return entity
 	}
 
+	public func getFirst<T>(
+		sortBy: [SortDescriptor<T>] = []
+	) throws -> T where T: EstalviaSwiftDataSourceEntity {
+		var d = FetchDescriptor<T>(sortBy: sortBy)
+		d.fetchLimit = 1
+		let arr = try context.fetch(d)
+		guard let first = arr.first else { throw SwiftPersistSwiftDataProviderError.noEntityFound(model: "\(T.self)") }
+		return first
+	}
 	public func delete<T>(_ entity: T) throws where T: EstalviaSwiftDataSourceEntity {
 		context.delete(entity)
 		try context.save()

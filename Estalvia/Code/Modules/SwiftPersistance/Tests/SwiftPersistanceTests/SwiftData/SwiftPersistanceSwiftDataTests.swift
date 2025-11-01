@@ -12,10 +12,10 @@ import SwiftData
 
 @Model
 class User {
-	var id: UUID = UUID()
+	@Attribute(.unique) var id: Int
 	var name: String = ""
 
-	init(id: UUID, name: String) {
+	init(id: Int, name: String) {
 		self.id = id
 		self.name = name
 	}
@@ -41,31 +41,59 @@ struct Test {
 	func testFetchReturnsValue() throws {
 		// Given
 		let context = MockContext()
-		let id = UUID()
-		let name = "Test"
-		let user = User(id: id, name: name)
-		context.insert(user)
+		let id1 = 1
+		let name1 = "Test1"
+		let user1 = User(id: id1, name: name1)
+		context.insert(user1)
+		let id2 = 2
+		let name2 = "Test2"
+		let user2 = User(id: id2, name: name2)
+		context.insert(user2)
 		let sut = makeSut(context: context)
 
 		// When
-		let descriptor = FetchDescriptor<User>()
-		let result: User? = try sut.fetch(descriptor)
+		var descriptor = FetchDescriptor<User>()
+		descriptor.predicate = #Predicate {$0.id == id1}
+		let result: User = try sut.fetch(descriptor)
 
 		// Then
 		#expect(context.fetchCallCount == 1)
-		#expect(result?.id == id)
-		#expect(result?.name == name)
+		#expect(result.id == id1)
+		#expect(result.name == name1)
+	}
+
+	@Test("test insert and fetchFirst returns value")
+	func testFetchFirstReturnsValue() throws {
+		// Given
+		let context = MockContext()
+		let id1 = 1
+		let name1 = "Test1"
+		let user1 = User(id: id1, name: name1)
+		context.insert(user1)
+		let id2 = 2
+		let name2 = "Test2"
+		let user2 = User(id: id2, name: name2)
+		context.insert(user2)
+		let sut = makeSut(context: context)
+
+		// When
+		let result: User = try sut.getFirst(sortBy: [SortDescriptor(\User.id, order: .forward)])
+
+		// Then
+		#expect(context.fetchCallCount == 1)
+		#expect(result.id == user1.id)
+		#expect(result.name == user1.name)
 	}
 
 	@Test("Test get all")
 	func testGetAll() throws {
 		// Given
 		let context = MockContext()
-		let id1 = UUID()
+		let id1 = 1
 		let name1 = "Test1"
 		let user1 = User(id: id1, name: name1)
 		context.insert(user1)
-		let id2 = UUID()
+		let id2 = 2
 		let name2 = "Test2"
 		let user2 = User(id: id2, name: name2)
 		context.insert(user2)
@@ -84,7 +112,7 @@ struct Test {
 	func testDelete() throws {
 		// Given
 		let context = MockContext()
-		let id = UUID()
+		let id = 1
 		let name = "Test"
 		let user = User(id: id, name: name)
 		context.insert(user)
@@ -104,7 +132,7 @@ struct Test {
 }
 
 private class MockContext: SwiftPersistSwiftDataProviderContext, @unchecked Sendable {
-	var models: [UUID: any PersistentModel] = [:]
+	var models: [any PersistentModel] = []
 	var deleteCallCount: Int = 0
 	var insertCallCount: Int = 0
 	var saveCallCount: Int = 0
@@ -121,7 +149,7 @@ private class MockContext: SwiftPersistSwiftDataProviderContext, @unchecked Send
 		fetchCallCount += 1
 
 		// 1) Narrow to requested type `T`
-		var items = models.values.compactMap { $0 as? T }
+		var items = models.compactMap { $0 as? T }
 
 		// 2) Apply predicate if present
 		if let predicate = descriptor.predicate {
@@ -146,13 +174,12 @@ private class MockContext: SwiftPersistSwiftDataProviderContext, @unchecked Send
 
 	func insert<T>(_ model: T) where T : PersistentModel {
 		insertCallCount += 1
-		models[UUID()] = model
+		models.append(model)
 	}
 
 	func delete<T>(_ model: T) where T : PersistentModel {
 		deleteCallCount += 1
-		let modelToDelete = models.first(where: {$1 as? T == model})
-		models.removeValue(forKey: modelToDelete?.key ?? UUID())
+		models.removeAll(where: {$0.id == model.id})
 	}
 
 	func save() throws {

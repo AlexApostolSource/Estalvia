@@ -22,20 +22,20 @@ public protocol SwiftPersistanceSwiftData {
 		/// - Effects:
 		///   - Calls `context.insert(entity)` followed by `context.save()`.
 		/// - Throws: Any error thrown by `ModelContext.save()`.
-	func save<T: Sendable>(entity: T) async throws where T: EstalviaSwiftDataSourceEntity
+	func save<T>(entity: T) throws where T: EstalviaSwiftDataSourceEntity
 
 		/// Returns the **first** element for the requested type or throws if no entities exist.
 		///
 		/// - Returns: The first stored instance of `T`.
 		/// - Throws: `SwiftPersistSwiftDataProviderError.noEntityFound(model:)`
 		///           if the store has no entities of type `T`, or fetch errors from SwiftData.
-	func getFirst<T>() async throws -> T where T: EstalviaSwiftDataSourceEntity
+	func getFirst<T>() throws -> T where T: EstalviaSwiftDataSourceEntity
 
 		/// Returns **all** elements for the requested type.
 		///
 		/// - Returns: An array of all stored instances of `T`.
 		/// - Throws: Any error thrown by `ModelContext.fetch(_:)`.
-	func getAll<T>() async throws -> [T] where T: EstalviaSwiftDataSourceEntity
+	func getAll<T>() throws -> [T] where T: EstalviaSwiftDataSourceEntity
 
 		/// Deletes a specific element and **persists** the context.
 		///
@@ -44,37 +44,33 @@ public protocol SwiftPersistanceSwiftData {
 		/// - Effects:
 		///   - Calls `context.delete(entity)` followed by `context.save()`.
 		/// - Throws: Any error thrown by `ModelContext.save()`.
-	func delete<T: Sendable>(_ entity: T) async throws where T: EstalviaSwiftDataSourceEntity
+	func delete<T>(_ entity: T) throws where T: EstalviaSwiftDataSourceEntity
 
-		/// Optional hook for bootstrapping (e.g., migrations, seeding, integrity checks).
-		/// Default implementations may no-op.
-	func setup() async throws
+	func fetch<T>(_ descriptor: FetchDescriptor<T>) throws -> T? where T: EstalviaSwiftDataSourceEntity
 }
 
 
-public actor SwiftPersistSwiftDataProvider: SwiftPersistanceSwiftData {
+public struct SwiftPersistSwiftDataProvider: SwiftPersistanceSwiftData {
+	private let context: SwiftPersistSwiftDataProviderContext
 
-	private let modelContainer: ModelContainer
-	private let context: ModelContext
-
-	public init(modelContainer: ModelContainer) {
-		self.modelContainer = modelContainer
-		self.context = ModelContext(modelContainer)
+	public init(context: SwiftPersistSwiftDataProviderContext) {
+		self.context = context
 	}
 
-	public func setup() async throws {
-
-	}
-
-	public func getAll<T: Sendable>() async throws -> [T] where T: EstalviaSwiftDataSourceEntity {
+	public func getAll<T>() throws -> [T] where T: EstalviaSwiftDataSourceEntity {
 		try context.fetch(FetchDescriptor<T>())
 	}
 
-	public func save<T>(entity: T) async throws where T: EstalviaSwiftDataSourceEntity {
+	public func save<T>(entity: T) throws where T: EstalviaSwiftDataSourceEntity {
 		context.insert(entity)
+		try context.save()
 	}
 
-	public func getFirst<T: Sendable>() async throws -> T where T: EstalviaSwiftDataSourceEntity {
+	public func fetch<T>(_ descriptor: FetchDescriptor<T>) throws -> T? where T: EstalviaSwiftDataSourceEntity {
+		try context.fetch(descriptor).first
+	}
+
+	public func getFirst<T>() throws -> T where T: EstalviaSwiftDataSourceEntity {
 		var description = FetchDescriptor<T>()
 		description.fetchLimit = 1
 		guard let first = try context.fetch(description).first else {
@@ -82,7 +78,8 @@ public actor SwiftPersistSwiftDataProvider: SwiftPersistanceSwiftData {
 		}
 		return first
 	}
-	public func delete<T: Sendable>(_ entity: T) async throws where T: EstalviaSwiftDataSourceEntity {
+
+	public func delete<T>(_ entity: T) throws where T: EstalviaSwiftDataSourceEntity {
 		context.delete(entity)
 		try context.save()
 	}
@@ -94,3 +91,12 @@ public enum SwiftPersistSwiftDataProviderError: Error {
 	case setupFailed(underlyingError: Error)
 	case noEntityFound(model: String)
 }
+
+public protocol SwiftPersistSwiftDataProviderContext {
+	func fetch<T>(_ descriptor: FetchDescriptor<T>) throws -> [T] where T : PersistentModel
+	func insert<T>(_ model: T) where T : PersistentModel
+	func delete<T>(_ model: T) where T : PersistentModel
+	func save() throws
+}
+
+extension ModelContext: SwiftPersistSwiftDataProviderContext {}

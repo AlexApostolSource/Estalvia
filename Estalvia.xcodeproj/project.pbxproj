@@ -215,7 +215,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Estalvia/.swiftlint.yml",
+				"",
 			);
 			name = SwiftLint;
 			outputFileListPaths = (

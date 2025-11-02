@@ -215,7 +215,7 @@ only_rules:
   - unavailable_function
   - unhandled_throwing_task
   - unneeded_break_in_switch
-  # - unneeded_override
+  - unneeded_override
   - unneeded_parentheses_in_closure_argument
   - unneeded_synthesized_initializer
   - unowned_variable_capture

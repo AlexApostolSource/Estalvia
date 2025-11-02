@@ -16,6 +16,7 @@ excluded:
 
 disabled_rules: # rule identifiers to exclude from running
   - nesting
+  - unneeded_override
 
 # 2. Reglas “opt-in” (requieren activación explícita)
 opt_in_rules:

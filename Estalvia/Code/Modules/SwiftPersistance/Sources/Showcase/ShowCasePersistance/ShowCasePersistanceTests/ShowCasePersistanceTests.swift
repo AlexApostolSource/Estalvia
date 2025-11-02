@@ -5,8 +5,8 @@
 //  Created by Alex.personal on 2/11/25.
 //
 
-import Testing
 @testable import ShowCasePersistance
+import Testing
 
 struct ShowCasePersistanceTests {
 

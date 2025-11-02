@@ -4,8 +4,8 @@
 //
 //  Created by Alex.personal on 25/10/25.
 //
-import SwiftData
 import Foundation
+import SwiftData
 
 // Typealias that constrains repository operations to SwiftData models.
 /// All persisted models must be annotated with `@Model`, which conform to `PersistentModel`.
@@ -78,7 +78,6 @@ public protocol SwiftPersistanceSwiftData {
 	func fetch<T>(_ descriptor: FetchDescriptor<T>) throws -> T where T: EstalviaSwiftDataSourceEntity
 }
 
-
 public struct SwiftPersistSwiftDataProvider: SwiftPersistanceSwiftData {
 	private let context: SwiftPersistSwiftDataProviderContext
 
@@ -107,10 +106,10 @@ public struct SwiftPersistSwiftDataProvider: SwiftPersistanceSwiftData {
 	public func getFirst<T>(
 		sortBy: [SortDescriptor<T>] = []
 	) throws -> T where T: EstalviaSwiftDataSourceEntity {
-		var d = FetchDescriptor<T>(sortBy: sortBy)
-		d.fetchLimit = 1
-		let arr = try context.fetch(d)
-		guard let first = arr.first else { throw SwiftPersistSwiftDataProviderError.noEntityFound(model: "\(T.self)") }
+		var descriptor = FetchDescriptor<T>(sortBy: sortBy)
+		descriptor.fetchLimit = 1
+		let result = try context.fetch(descriptor)
+		guard let first = result.first else { throw SwiftPersistSwiftDataProviderError.noEntityFound(model: "\(T.self)") }
 		return first
 	}
 	public func delete<T>(_ entity: T) throws where T: EstalviaSwiftDataSourceEntity {
@@ -127,9 +126,9 @@ public enum SwiftPersistSwiftDataProviderError: Error {
 }
 
 public protocol SwiftPersistSwiftDataProviderContext {
-	func fetch<T>(_ descriptor: FetchDescriptor<T>) throws -> [T] where T : PersistentModel
-	func insert<T>(_ model: T) where T : PersistentModel
-	func delete<T>(_ model: T) where T : PersistentModel
+	func fetch<T>(_ descriptor: FetchDescriptor<T>) throws -> [T] where T: PersistentModel
+	func insert<T>(_ model: T) where T: PersistentModel
+	func delete<T>(_ model: T) where T: PersistentModel
 	func save() throws
 }
 

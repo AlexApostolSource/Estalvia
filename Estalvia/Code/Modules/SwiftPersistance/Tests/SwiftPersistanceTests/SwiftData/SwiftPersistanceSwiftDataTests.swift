@@ -6,9 +6,9 @@
 //
 
 import Foundation
-import Testing
 import SwiftData
 @testable import SwiftPersistance
+import Testing
 
 @Model
 class User {
@@ -53,7 +53,7 @@ struct Test {
 
 		// When
 		var descriptor = FetchDescriptor<User>()
-		descriptor.predicate = #Predicate {$0.id == id1}
+		descriptor.predicate = #Predicate { $0.id == id1 }
 		let result: User = try sut.fetch(descriptor)
 
 		// Then
@@ -172,14 +172,14 @@ private class MockContext: SwiftPersistSwiftDataProviderContext, @unchecked Send
 		return items
 	}
 
-	func insert<T>(_ model: T) where T : PersistentModel {
+	func insert<T>(_ model: T) where T: PersistentModel {
 		insertCallCount += 1
 		models.append(model)
 	}
 
-	func delete<T>(_ model: T) where T : PersistentModel {
+	func delete<T>(_ model: T) where T: PersistentModel {
 		deleteCallCount += 1
-		models.removeAll(where: {$0.id == model.id})
+		models.removeAll(where: { $0.id == model.id })
 	}
 
 	func save() throws {

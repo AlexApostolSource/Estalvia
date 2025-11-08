@@ -57,5 +57,9 @@ playground.xcworkspace
 *.DS_Store
 
 # SwiftLint cache
+.swiftlint-cache/
+# SwiftLint cache
 .swiftlint-cache
 
+# Generated / temp weird files (keep .plist tracked)
+*.plis

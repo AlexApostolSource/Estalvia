@@ -25,6 +25,12 @@ import UIKit
 
 
 
+
+
+
+
+
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 	var window: UIWindow?
@@ -41,6 +47,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 		window.rootViewController = rootNvigationController
 		self.window = window
+
+
+
+
 		window.makeKeyAndVisible()
 	}
 

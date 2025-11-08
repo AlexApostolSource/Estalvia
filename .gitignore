@@ -59,12 +59,3 @@ playground.xcworkspace
 # SwiftLint cache
 .swiftlint-cache
 
-# Generated / temp plist/diff files
-*.plist
-*.plis
-
-# Temp diffs/patches
-*.orig
-*.rej
-*.patch
-*.diff

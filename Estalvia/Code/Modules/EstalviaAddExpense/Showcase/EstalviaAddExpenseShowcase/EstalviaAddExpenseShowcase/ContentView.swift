@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  EsatlviaExpenseFlowShowCase
+//  EstalviaAddExpenseShowcase
 //
 //  Created by Alex.personal on 8/11/25.
 //

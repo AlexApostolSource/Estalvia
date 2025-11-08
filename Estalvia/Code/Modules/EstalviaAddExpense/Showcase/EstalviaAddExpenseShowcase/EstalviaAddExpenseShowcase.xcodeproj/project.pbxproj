@@ -7,67 +7,67 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CBB1FF1A2EBF3615008B8276 /* EstalviaAddExpense in Frameworks */ = {isa = PBXBuildFile; productRef = CBB1FF192EBF3615008B8276 /* EstalviaAddExpense */; };
+		CBD689442EBFB3BA0014FF0A /* EstalviaAddExpense in Frameworks */ = {isa = PBXBuildFile; productRef = CBD689432EBFB3BA0014FF0A /* EstalviaAddExpense */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CBB1FEFC2EBF35F8008B8276 /* PBXContainerItemProxy */ = {
+		CBD689262EBFB3A90014FF0A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = CBB1FEE62EBF35F7008B8276 /* Project object */;
+			containerPortal = CBD689102EBFB3A70014FF0A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CBB1FEED2EBF35F7008B8276;
-			remoteInfo = EsatlviaExpenseFlowShowCase;
+			remoteGlobalIDString = CBD689172EBFB3A70014FF0A;
+			remoteInfo = EstalviaAddExpenseShowcase;
 		};
-		CBB1FF062EBF35F9008B8276 /* PBXContainerItemProxy */ = {
+		CBD689302EBFB3A90014FF0A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = CBB1FEE62EBF35F7008B8276 /* Project object */;
+			containerPortal = CBD689102EBFB3A70014FF0A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CBB1FEED2EBF35F7008B8276;
-			remoteInfo = EsatlviaExpenseFlowShowCase;
+			remoteGlobalIDString = CBD689172EBFB3A70014FF0A;
+			remoteInfo = EstalviaAddExpenseShowcase;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CBB1FEEE2EBF35F7008B8276 /* EsatlviaExpenseFlowShowCase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EsatlviaExpenseFlowShowCase.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBB1FEFB2EBF35F8008B8276 /* EsatlviaExpenseFlowShowCaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EsatlviaExpenseFlowShowCaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBB1FF052EBF35F9008B8276 /* EsatlviaExpenseFlowShowCaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EsatlviaExpenseFlowShowCaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBD689182EBFB3A70014FF0A /* EstalviaAddExpenseShowcase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EstalviaAddExpenseShowcase.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBD689252EBFB3A90014FF0A /* EstalviaAddExpenseShowcaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EstalviaAddExpenseShowcaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBD6892F2EBFB3A90014FF0A /* EstalviaAddExpenseShowcaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EstalviaAddExpenseShowcaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		CBB1FEF02EBF35F7008B8276 /* EsatlviaExpenseFlowShowCase */ = {
+		CBD6891A2EBFB3A70014FF0A /* EstalviaAddExpenseShowcase */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = EsatlviaExpenseFlowShowCase;
+			path = EstalviaAddExpenseShowcase;
 			sourceTree = "<group>";
 		};
-		CBB1FEFE2EBF35F9008B8276 /* EsatlviaExpenseFlowShowCaseTests */ = {
+		CBD689282EBFB3A90014FF0A /* EstalviaAddExpenseShowcaseTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = EsatlviaExpenseFlowShowCaseTests;
+			path = EstalviaAddExpenseShowcaseTests;
 			sourceTree = "<group>";
 		};
-		CBB1FF082EBF35F9008B8276 /* EsatlviaExpenseFlowShowCaseUITests */ = {
+		CBD689322EBFB3A90014FF0A /* EstalviaAddExpenseShowcaseUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = EsatlviaExpenseFlowShowCaseUITests;
+			path = EstalviaAddExpenseShowcaseUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		CBB1FEEB2EBF35F7008B8276 /* Frameworks */ = {
+		CBD689152EBFB3A70014FF0A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBB1FF1A2EBF3615008B8276 /* EstalviaAddExpense in Frameworks */,
+				CBD689442EBFB3BA0014FF0A /* EstalviaAddExpense in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CBB1FEF82EBF35F8008B8276 /* Frameworks */ = {
+		CBD689222EBFB3A90014FF0A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CBB1FF022EBF35F9008B8276 /* Frameworks */ = {
+		CBD6892C2EBFB3A90014FF0A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -77,22 +77,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CBB1FEE52EBF35F7008B8276 = {
+		CBD6890F2EBFB3A70014FF0A = {
 			isa = PBXGroup;
 			children = (
-				CBB1FEF02EBF35F7008B8276 /* EsatlviaExpenseFlowShowCase */,
-				CBB1FEFE2EBF35F9008B8276 /* EsatlviaExpenseFlowShowCaseTests */,
-				CBB1FF082EBF35F9008B8276 /* EsatlviaExpenseFlowShowCaseUITests */,
-				CBB1FEEF2EBF35F7008B8276 /* Products */,
+				CBD6891A2EBFB3A70014FF0A /* EstalviaAddExpenseShowcase */,
+				CBD689282EBFB3A90014FF0A /* EstalviaAddExpenseShowcaseTests */,
+				CBD689322EBFB3A90014FF0A /* EstalviaAddExpenseShowcaseUITests */,
+				CBD689192EBFB3A70014FF0A /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		CBB1FEEF2EBF35F7008B8276 /* Products */ = {
+		CBD689192EBFB3A70014FF0A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CBB1FEEE2EBF35F7008B8276 /* EsatlviaExpenseFlowShowCase.app */,
-				CBB1FEFB2EBF35F8008B8276 /* EsatlviaExpenseFlowShowCaseTests.xctest */,
-				CBB1FF052EBF35F9008B8276 /* EsatlviaExpenseFlowShowCaseUITests.xctest */,
+				CBD689182EBFB3A70014FF0A /* EstalviaAddExpenseShowcase.app */,
+				CBD689252EBFB3A90014FF0A /* EstalviaAddExpenseShowcaseTests.xctest */,
+				CBD6892F2EBFB3A90014FF0A /* EstalviaAddExpenseShowcaseUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,139 +100,138 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CBB1FEED2EBF35F7008B8276 /* EsatlviaExpenseFlowShowCase */ = {
+		CBD689172EBFB3A70014FF0A /* EstalviaAddExpenseShowcase */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CBB1FF0F2EBF35F9008B8276 /* Build configuration list for PBXNativeTarget "EsatlviaExpenseFlowShowCase" */;
+			buildConfigurationList = CBD689392EBFB3A90014FF0A /* Build configuration list for PBXNativeTarget "EstalviaAddExpenseShowcase" */;
 			buildPhases = (
-				CBB1FEEA2EBF35F7008B8276 /* Sources */,
-				CBB1FEEB2EBF35F7008B8276 /* Frameworks */,
-				CBB1FEEC2EBF35F7008B8276 /* Resources */,
-				CBB1FF2B2EBF366A008B8276 /* SwiftLint */,
+				CBD689142EBFB3A70014FF0A /* Sources */,
+				CBD689152EBFB3A70014FF0A /* Frameworks */,
+				CBD689162EBFB3A70014FF0A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				CBB1FEF02EBF35F7008B8276 /* EsatlviaExpenseFlowShowCase */,
+				CBD6891A2EBFB3A70014FF0A /* EstalviaAddExpenseShowcase */,
 			);
-			name = EsatlviaExpenseFlowShowCase;
+			name = EstalviaAddExpenseShowcase;
 			packageProductDependencies = (
-				CBB1FF192EBF3615008B8276 /* EstalviaAddExpense */,
+				CBD689432EBFB3BA0014FF0A /* EstalviaAddExpense */,
 			);
-			productName = EsatlviaExpenseFlowShowCase;
-			productReference = CBB1FEEE2EBF35F7008B8276 /* EsatlviaExpenseFlowShowCase.app */;
+			productName = EstalviaAddExpenseShowcase;
+			productReference = CBD689182EBFB3A70014FF0A /* EstalviaAddExpenseShowcase.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CBB1FEFA2EBF35F8008B8276 /* EsatlviaExpenseFlowShowCaseTests */ = {
+		CBD689242EBFB3A90014FF0A /* EstalviaAddExpenseShowcaseTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CBB1FF122EBF35F9008B8276 /* Build configuration list for PBXNativeTarget "EsatlviaExpenseFlowShowCaseTests" */;
+			buildConfigurationList = CBD6893C2EBFB3A90014FF0A /* Build configuration list for PBXNativeTarget "EstalviaAddExpenseShowcaseTests" */;
 			buildPhases = (
-				CBB1FEF72EBF35F8008B8276 /* Sources */,
-				CBB1FEF82EBF35F8008B8276 /* Frameworks */,
-				CBB1FEF92EBF35F8008B8276 /* Resources */,
+				CBD689212EBFB3A90014FF0A /* Sources */,
+				CBD689222EBFB3A90014FF0A /* Frameworks */,
+				CBD689232EBFB3A90014FF0A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CBB1FEFD2EBF35F8008B8276 /* PBXTargetDependency */,
+				CBD689272EBFB3A90014FF0A /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				CBB1FEFE2EBF35F9008B8276 /* EsatlviaExpenseFlowShowCaseTests */,
+				CBD689282EBFB3A90014FF0A /* EstalviaAddExpenseShowcaseTests */,
 			);
-			name = EsatlviaExpenseFlowShowCaseTests;
+			name = EstalviaAddExpenseShowcaseTests;
 			packageProductDependencies = (
 			);
-			productName = EsatlviaExpenseFlowShowCaseTests;
-			productReference = CBB1FEFB2EBF35F8008B8276 /* EsatlviaExpenseFlowShowCaseTests.xctest */;
+			productName = EstalviaAddExpenseShowcaseTests;
+			productReference = CBD689252EBFB3A90014FF0A /* EstalviaAddExpenseShowcaseTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		CBB1FF042EBF35F9008B8276 /* EsatlviaExpenseFlowShowCaseUITests */ = {
+		CBD6892E2EBFB3A90014FF0A /* EstalviaAddExpenseShowcaseUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CBB1FF152EBF35F9008B8276 /* Build configuration list for PBXNativeTarget "EsatlviaExpenseFlowShowCaseUITests" */;
+			buildConfigurationList = CBD6893F2EBFB3A90014FF0A /* Build configuration list for PBXNativeTarget "EstalviaAddExpenseShowcaseUITests" */;
 			buildPhases = (
-				CBB1FF012EBF35F9008B8276 /* Sources */,
-				CBB1FF022EBF35F9008B8276 /* Frameworks */,
-				CBB1FF032EBF35F9008B8276 /* Resources */,
+				CBD6892B2EBFB3A90014FF0A /* Sources */,
+				CBD6892C2EBFB3A90014FF0A /* Frameworks */,
+				CBD6892D2EBFB3A90014FF0A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CBB1FF072EBF35F9008B8276 /* PBXTargetDependency */,
+				CBD689312EBFB3A90014FF0A /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				CBB1FF082EBF35F9008B8276 /* EsatlviaExpenseFlowShowCaseUITests */,
+				CBD689322EBFB3A90014FF0A /* EstalviaAddExpenseShowcaseUITests */,
 			);
-			name = EsatlviaExpenseFlowShowCaseUITests;
+			name = EstalviaAddExpenseShowcaseUITests;
 			packageProductDependencies = (
 			);
-			productName = EsatlviaExpenseFlowShowCaseUITests;
-			productReference = CBB1FF052EBF35F9008B8276 /* EsatlviaExpenseFlowShowCaseUITests.xctest */;
+			productName = EstalviaAddExpenseShowcaseUITests;
+			productReference = CBD6892F2EBFB3A90014FF0A /* EstalviaAddExpenseShowcaseUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		CBB1FEE62EBF35F7008B8276 /* Project object */ = {
+		CBD689102EBFB3A70014FF0A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
-					CBB1FEED2EBF35F7008B8276 = {
+					CBD689172EBFB3A70014FF0A = {
 						CreatedOnToolsVersion = 26.0.1;
 					};
-					CBB1FEFA2EBF35F8008B8276 = {
+					CBD689242EBFB3A90014FF0A = {
 						CreatedOnToolsVersion = 26.0.1;
-						TestTargetID = CBB1FEED2EBF35F7008B8276;
+						TestTargetID = CBD689172EBFB3A70014FF0A;
 					};
-					CBB1FF042EBF35F9008B8276 = {
+					CBD6892E2EBFB3A90014FF0A = {
 						CreatedOnToolsVersion = 26.0.1;
-						TestTargetID = CBB1FEED2EBF35F7008B8276;
+						TestTargetID = CBD689172EBFB3A70014FF0A;
 					};
 				};
 			};
-			buildConfigurationList = CBB1FEE92EBF35F7008B8276 /* Build configuration list for PBXProject "EsatlviaExpenseFlowShowCase" */;
+			buildConfigurationList = CBD689132EBFB3A70014FF0A /* Build configuration list for PBXProject "EstalviaAddExpenseShowcase" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = CBB1FEE52EBF35F7008B8276;
+			mainGroup = CBD6890F2EBFB3A70014FF0A;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				CBB1FF182EBF3615008B8276 /* XCLocalSwiftPackageReference "../../../../EstalviaAddExpense" */,
+				CBD689422EBFB3BA0014FF0A /* XCLocalSwiftPackageReference "../../../EstalviaAddExpense" */,
 			);
 			preferredProjectObjectVersion = 77;
-			productRefGroup = CBB1FEEF2EBF35F7008B8276 /* Products */;
+			productRefGroup = CBD689192EBFB3A70014FF0A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CBB1FEED2EBF35F7008B8276 /* EsatlviaExpenseFlowShowCase */,
-				CBB1FEFA2EBF35F8008B8276 /* EsatlviaExpenseFlowShowCaseTests */,
-				CBB1FF042EBF35F9008B8276 /* EsatlviaExpenseFlowShowCaseUITests */,
+				CBD689172EBFB3A70014FF0A /* EstalviaAddExpenseShowcase */,
+				CBD689242EBFB3A90014FF0A /* EstalviaAddExpenseShowcaseTests */,
+				CBD6892E2EBFB3A90014FF0A /* EstalviaAddExpenseShowcaseUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CBB1FEEC2EBF35F7008B8276 /* Resources */ = {
+		CBD689162EBFB3A70014FF0A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CBB1FEF92EBF35F8008B8276 /* Resources */ = {
+		CBD689232EBFB3A90014FF0A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CBB1FF032EBF35F9008B8276 /* Resources */ = {
+		CBD6892D2EBFB3A90014FF0A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -241,44 +240,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		CBB1FF2B2EBF366A008B8276 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# --- SwiftLint incremental (single root config for all modules) ---\n# Requires: git and swiftlint installed. Recommended shell: /bin/zsh\n\nset -euo pipefail\nexport PATH=\"/opt/homebrew/bin:/usr/local/bin:$PATH\"\n\nif ! command -v swiftlint >/dev/null 2>&1; then\n  echo \"warning: SwiftLint is not installed. https://github.com/realm/SwiftLint\"\n  exit 0\nfi\n\n# Resolve repo root (fallback to SRCROOT if not a git repo)\nGIT_ROOT=\"$(git -C \"${SRCROOT:-.}\" rev-parse --show-toplevel 2>/dev/null || echo \"${SRCROOT:-.}\")\"\n\n# Base ref for incremental diff (override with LINT_BASE_REF if needed)\nBASE_REF=\"${LINT_BASE_REF:-origin/main}\"\n\n# Compute diff range (changed in this branch)\nif git -C \"$GIT_ROOT\" rev-parse --verify \"$BASE_REF\" >/dev/null 2>&1; then\n  MERGE_BASE=\"$(git -C \"$GIT_ROOT\" merge-base HEAD \"$BASE_REF\")\"\n  RANGE=\"$MERGE_BASE...HEAD\"\nelse\n  RANGE=\"HEAD~1...HEAD\"\nfi\n\n# Gather modified + untracked .swift files (tracked repo paths only)\nCHANGED_SWIFT=\"$(git -C \"$GIT_ROOT\" diff --name-only --diff-filter=ACMR $RANGE -- '*.swift' || true)\"\nUNTRACKED_SWIFT=\"$(git -C \"$GIT_ROOT\" ls-files --others --exclude-standard -- '*.swift' || true)\"\n\n# Merge, normalize, deduplicate\nALL_SWIFT=\"$(printf \"%s\\n%s\\n\" \"$CHANGED_SWIFT\" \"$UNTRACKED_SWIFT\" | awk 'NF' | sort -u)\"\n\nif [[ -z \"$ALL_SWIFT\" ]]; then\n  echo \"SwiftLint: no modified .swift files. Skipping.\"\n  exit 0\nfi\n\n# Locate a single root configuration for ALL modules\n# Search order (first found wins):\n#  1) $GIT_ROOT/.swiftlint.yml\n#  2) $GIT_ROOT/.swiftlint.yaml\n#  3) $GIT_ROOT/.swiftlint\n#  4) $GIT_ROOT/Estalvia/SupportedFiles/.swiftlint   (matches your project tree)\nROOT_CONFIG=\"$SRCROOT/Estalvia/.swiftlint.yml\"\n\n\n# Build absolute file list\nFILES=()\nwhile IFS= read -r relpath; do\n  fullpath=\"$GIT_ROOT/$relpath\"\n  [[ -f \"$fullpath\" ]] || continue\n  FILES+=(\"$fullpath\")\ndone <<< \"$ALL_SWIFT\"\n\necho \"SwiftLint: ${#FILES[@]} modified .swift files (single root config)\"\n\nlint_with_list () {\n  local cfg=\"$1\"; shift\n  local -a files=(\"$@\")\n  [[ ${#files[@]} -eq 0 ]] && return 0\n\n  # Pass files via SCRIPT_INPUT_FILE_* to SwiftLint\n  export SCRIPT_INPUT_FILE_COUNT=${#files[@]}\n  local i=0\n  for f in \"${files[@]}\"; do\n    # shellcheck disable=SC2140\n    eval \"export SCRIPT_INPUT_FILE_$i=\\\"${f}\\\"\"\n    ((i++))\n  done\n\n  # --force-exclude makes SwiftLint honor 'excluded:' from the root config,\n  # even when passing explicit files via --use-script-input-files.\n  if [[ -n \"$cfg\" ]]; then\n    swiftlint lint --quiet --use-script-input-files --config \"$cfg\" --force-exclude || true\n  else\n    echo \"warning: no root SwiftLint config found. Using SwiftLint defaults.\"\n    swiftlint lint --quiet --use-script-input-files || true\n  fi\n\n  # Cleanup env vars\n  unset SCRIPT_INPUT_FILE_COUNT\n  i=0\n  for _ in \"${files[@]}\"; do\n    unset \"SCRIPT_INPUT_FILE_$i\" || true\n    ((i++))\n  done\n}\n\n# Lint all modified files with the single root config\nlint_with_list \"$ROOT_CONFIG\" \"${FILES[@]}\"\n\n# Optional: enable caching to speed up runs (creates a cache at repo root)\n# swiftlint lint --cache-path \"$GIT_ROOT/.swiftlint.cache\" ...\n\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		CBB1FEEA2EBF35F7008B8276 /* Sources */ = {
+		CBD689142EBFB3A70014FF0A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CBB1FEF72EBF35F8008B8276 /* Sources */ = {
+		CBD689212EBFB3A90014FF0A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CBB1FF012EBF35F9008B8276 /* Sources */ = {
+		CBD6892B2EBFB3A90014FF0A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -288,20 +265,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CBB1FEFD2EBF35F8008B8276 /* PBXTargetDependency */ = {
+		CBD689272EBFB3A90014FF0A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CBB1FEED2EBF35F7008B8276 /* EsatlviaExpenseFlowShowCase */;
-			targetProxy = CBB1FEFC2EBF35F8008B8276 /* PBXContainerItemProxy */;
+			target = CBD689172EBFB3A70014FF0A /* EstalviaAddExpenseShowcase */;
+			targetProxy = CBD689262EBFB3A90014FF0A /* PBXContainerItemProxy */;
 		};
-		CBB1FF072EBF35F9008B8276 /* PBXTargetDependency */ = {
+		CBD689312EBFB3A90014FF0A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CBB1FEED2EBF35F7008B8276 /* EsatlviaExpenseFlowShowCase */;
-			targetProxy = CBB1FF062EBF35F9008B8276 /* PBXContainerItemProxy */;
+			target = CBD689172EBFB3A70014FF0A /* EstalviaAddExpenseShowcase */;
+			targetProxy = CBD689302EBFB3A90014FF0A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		CBB1FF0D2EBF35F9008B8276 /* Debug */ = {
+		CBD689372EBFB3A90014FF0A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -339,7 +316,7 @@
 				DEVELOPMENT_TEAM = 8DURMPUBZ2;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -365,7 +342,7 @@
 			};
 			name = Debug;
 		};
-		CBB1FF0E2EBF35F9008B8276 /* Release */ = {
+		CBD689382EBFB3A90014FF0A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -403,7 +380,7 @@
 				DEVELOPMENT_TEAM = 8DURMPUBZ2;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -422,7 +399,7 @@
 			};
 			name = Release;
 		};
-		CBB1FF102EBF35F9008B8276 /* Debug */ = {
+		CBD6893A2EBFB3A90014FF0A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -442,7 +419,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alex.apostol.EsatlviaExpenseFlowShowCase;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alex.apostol.EstalviaAddExpenseShowcase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -454,7 +431,7 @@
 			};
 			name = Debug;
 		};
-		CBB1FF112EBF35F9008B8276 /* Release */ = {
+		CBD6893B2EBFB3A90014FF0A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -474,7 +451,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alex.apostol.EsatlviaExpenseFlowShowCase;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alex.apostol.EstalviaAddExpenseShowcase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -486,7 +463,7 @@
 			};
 			name = Release;
 		};
-		CBB1FF132EBF35F9008B8276 /* Debug */ = {
+		CBD6893D2EBFB3A90014FF0A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -496,7 +473,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alex.apostol.EsatlviaExpenseFlowShowCaseTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alex.apostol.EstalviaAddExpenseShowcaseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -504,11 +481,11 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EsatlviaExpenseFlowShowCase.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EsatlviaExpenseFlowShowCase";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EstalviaAddExpenseShowcase.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EstalviaAddExpenseShowcase";
 			};
 			name = Debug;
 		};
-		CBB1FF142EBF35F9008B8276 /* Release */ = {
+		CBD6893E2EBFB3A90014FF0A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -518,7 +495,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alex.apostol.EsatlviaExpenseFlowShowCaseTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alex.apostol.EstalviaAddExpenseShowcaseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -526,11 +503,11 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EsatlviaExpenseFlowShowCase.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EsatlviaExpenseFlowShowCase";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EstalviaAddExpenseShowcase.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EstalviaAddExpenseShowcase";
 			};
 			name = Release;
 		};
-		CBB1FF162EBF35F9008B8276 /* Debug */ = {
+		CBD689402EBFB3A90014FF0A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -538,7 +515,7 @@
 				DEVELOPMENT_TEAM = 8DURMPUBZ2;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alex.apostol.EsatlviaExpenseFlowShowCaseUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alex.apostol.EstalviaAddExpenseShowcaseUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -546,11 +523,11 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = EsatlviaExpenseFlowShowCase;
+				TEST_TARGET_NAME = EstalviaAddExpenseShowcase;
 			};
 			name = Debug;
 		};
-		CBB1FF172EBF35F9008B8276 /* Release */ = {
+		CBD689412EBFB3A90014FF0A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -558,7 +535,7 @@
 				DEVELOPMENT_TEAM = 8DURMPUBZ2;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alex.apostol.EsatlviaExpenseFlowShowCaseUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alex.apostol.EstalviaAddExpenseShowcaseUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -566,45 +543,45 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = EsatlviaExpenseFlowShowCase;
+				TEST_TARGET_NAME = EstalviaAddExpenseShowcase;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CBB1FEE92EBF35F7008B8276 /* Build configuration list for PBXProject "EsatlviaExpenseFlowShowCase" */ = {
+		CBD689132EBFB3A70014FF0A /* Build configuration list for PBXProject "EstalviaAddExpenseShowcase" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CBB1FF0D2EBF35F9008B8276 /* Debug */,
-				CBB1FF0E2EBF35F9008B8276 /* Release */,
+				CBD689372EBFB3A90014FF0A /* Debug */,
+				CBD689382EBFB3A90014FF0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CBB1FF0F2EBF35F9008B8276 /* Build configuration list for PBXNativeTarget "EsatlviaExpenseFlowShowCase" */ = {
+		CBD689392EBFB3A90014FF0A /* Build configuration list for PBXNativeTarget "EstalviaAddExpenseShowcase" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CBB1FF102EBF35F9008B8276 /* Debug */,
-				CBB1FF112EBF35F9008B8276 /* Release */,
+				CBD6893A2EBFB3A90014FF0A /* Debug */,
+				CBD6893B2EBFB3A90014FF0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CBB1FF122EBF35F9008B8276 /* Build configuration list for PBXNativeTarget "EsatlviaExpenseFlowShowCaseTests" */ = {
+		CBD6893C2EBFB3A90014FF0A /* Build configuration list for PBXNativeTarget "EstalviaAddExpenseShowcaseTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CBB1FF132EBF35F9008B8276 /* Debug */,
-				CBB1FF142EBF35F9008B8276 /* Release */,
+				CBD6893D2EBFB3A90014FF0A /* Debug */,
+				CBD6893E2EBFB3A90014FF0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CBB1FF152EBF35F9008B8276 /* Build configuration list for PBXNativeTarget "EsatlviaExpenseFlowShowCaseUITests" */ = {
+		CBD6893F2EBFB3A90014FF0A /* Build configuration list for PBXNativeTarget "EstalviaAddExpenseShowcaseUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CBB1FF162EBF35F9008B8276 /* Debug */,
-				CBB1FF172EBF35F9008B8276 /* Release */,
+				CBD689402EBFB3A90014FF0A /* Debug */,
+				CBD689412EBFB3A90014FF0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -612,18 +589,18 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		CBB1FF182EBF3615008B8276 /* XCLocalSwiftPackageReference "../../../../EstalviaAddExpense" */ = {
+		CBD689422EBFB3BA0014FF0A /* XCLocalSwiftPackageReference "../../../EstalviaAddExpense" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../../../EstalviaAddExpense;
+			relativePath = ../../../EstalviaAddExpense;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CBB1FF192EBF3615008B8276 /* EstalviaAddExpense */ = {
+		CBD689432EBFB3BA0014FF0A /* EstalviaAddExpense */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = EstalviaAddExpense;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = CBB1FEE62EBF35F7008B8276 /* Project object */;
+	rootObject = CBD689102EBFB3A70014FF0A /* Project object */;
 }

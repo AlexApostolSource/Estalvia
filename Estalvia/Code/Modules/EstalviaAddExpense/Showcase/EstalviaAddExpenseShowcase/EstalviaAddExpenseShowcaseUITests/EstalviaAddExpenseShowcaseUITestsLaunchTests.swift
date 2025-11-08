@@ -1,13 +1,13 @@
 //
-//  EsatlviaExpenseFlowShowCaseUITestsLaunchTests.swift
-//  EsatlviaExpenseFlowShowCaseUITests
+//  EstalviaAddExpenseShowcaseUITestsLaunchTests.swift
+//  EstalviaAddExpenseShowcaseUITests
 //
 //  Created by Alex.personal on 8/11/25.
 //
 
 import XCTest
 
-final class EsatlviaExpenseFlowShowCaseUITestsLaunchTests: XCTestCase {
+final class EstalviaAddExpenseShowcaseUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

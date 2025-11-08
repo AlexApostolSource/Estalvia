@@ -1,13 +1,13 @@
 //
-//  EsatlviaExpenseFlowShowCaseUITests.swift
-//  EsatlviaExpenseFlowShowCaseUITests
+//  EstalviaAddExpenseShowcaseUITests.swift
+//  EstalviaAddExpenseShowcaseUITests
 //
 //  Created by Alex.personal on 8/11/25.
 //
 
 import XCTest
 
-final class EsatlviaExpenseFlowShowCaseUITests: XCTestCase {
+final class EstalviaAddExpenseShowcaseUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

@@ -102,7 +102,6 @@
 				CBD33DF82E3E792E0089C92C /* Sources */,
 				CBD33DF92E3E792E0089C92C /* Frameworks */,
 				CBD33DFA2E3E792E0089C92C /* Resources */,
-				CBACDE502E5AE4AE002D2F4A /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -204,29 +203,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		CBACDE502E5AE4AE002D2F4A /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"",
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# --- SwiftLint incremental (single root config for all modules) ---\n# Requires: git and swiftlint installed. Recommended shell: /bin/zsh\n\nset -euo pipefail\nexport PATH=\"/opt/homebrew/bin:/usr/local/bin:$PATH\"\n\nif ! command -v swiftlint >/dev/null 2>&1; then\n  echo \"warning: SwiftLint is not installed. https://github.com/realm/SwiftLint\"\n  exit 0\nfi\n\n# Resolve repo root (fallback to SRCROOT if not a git repo)\nGIT_ROOT=\"$(git -C \"${SRCROOT:-.}\" rev-parse --show-toplevel 2>/dev/null || echo \"${SRCROOT:-.}\")\"\n\n# Base ref for incremental diff (override with LINT_BASE_REF if needed)\nBASE_REF=\"${LINT_BASE_REF:-origin/main}\"\n\n# Compute diff range (changed in this branch)\nif git -C \"$GIT_ROOT\" rev-parse --verify \"$BASE_REF\" >/dev/null 2>&1; then\n  MERGE_BASE=\"$(git -C \"$GIT_ROOT\" merge-base HEAD \"$BASE_REF\")\"\n  RANGE=\"$MERGE_BASE...HEAD\"\nelse\n  RANGE=\"HEAD~1...HEAD\"\nfi\n\n# Gather modified + untracked .swift files (tracked repo paths only)\nCHANGED_SWIFT=\"$(git -C \"$GIT_ROOT\" diff --name-only --diff-filter=ACMR $RANGE -- '*.swift' || true)\"\nUNTRACKED_SWIFT=\"$(git -C \"$GIT_ROOT\" ls-files --others --exclude-standard -- '*.swift' || true)\"\n\n# Merge, normalize, deduplicate\nALL_SWIFT=\"$(printf \"%s\\n%s\\n\" \"$CHANGED_SWIFT\" \"$UNTRACKED_SWIFT\" | awk 'NF' | sort -u)\"\n\nif [[ -z \"$ALL_SWIFT\" ]]; then\n  echo \"SwiftLint: no modified .swift files. Skipping.\"\n  exit 0\nfi\n\n# Locate a single root configuration for ALL modules\n# Search order (first found wins):\n#  1) $GIT_ROOT/.swiftlint.yml\n#  2) $GIT_ROOT/.swiftlint.yaml\n#  3) $GIT_ROOT/.swiftlint\n#  4) $GIT_ROOT/Estalvia/SupportedFiles/.swiftlint   (matches your project tree)\nROOT_CONFIG=\"$SRCROOT/Estalvia/.swiftlint.yml\"\n\n\n# Build absolute file list\nFILES=()\nwhile IFS= read -r relpath; do\n  fullpath=\"$GIT_ROOT/$relpath\"\n  [[ -f \"$fullpath\" ]] || continue\n  FILES+=(\"$fullpath\")\ndone <<< \"$ALL_SWIFT\"\n\necho \"SwiftLint: ${#FILES[@]} modified .swift files (single root config)\"\n\nlint_with_list () {\n  local cfg=\"$1\"; shift\n  local -a files=(\"$@\")\n  [[ ${#files[@]} -eq 0 ]] && return 0\n\n  # Pass files via SCRIPT_INPUT_FILE_* to SwiftLint\n  export SCRIPT_INPUT_FILE_COUNT=${#files[@]}\n  local i=0\n  for f in \"${files[@]}\"; do\n    # shellcheck disable=SC2140\n    eval \"export SCRIPT_INPUT_FILE_$i=\\\"${f}\\\"\"\n    ((i++))\n  done\n\n  # --force-exclude makes SwiftLint honor 'excluded:' from the root config,\n  # even when passing explicit files via --use-script-input-files.\n  if [[ -n \"$cfg\" ]]; then\n    swiftlint lint --quiet --use-script-input-files --config \"$cfg\" --force-exclude || true\n  else\n    echo \"warning: no root SwiftLint config found. Using SwiftLint defaults.\"\n    swiftlint lint --quiet --use-script-input-files || true\n  fi\n\n  # Cleanup env vars\n  unset SCRIPT_INPUT_FILE_COUNT\n  i=0\n  for _ in \"${files[@]}\"; do\n    unset \"SCRIPT_INPUT_FILE_$i\" || true\n    ((i++))\n  done\n}\n\n# Lint all modified files with the single root config\nlint_with_list \"$ROOT_CONFIG\" \"${FILES[@]}\"\n\n# Optional: enable caching to speed up runs (creates a cache at repo root)\n# swiftlint lint --cache-path \"$GIT_ROOT/.swiftlint.cache\" ...\n\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CBD33DF82E3E792E0089C92C /* Sources */ = {

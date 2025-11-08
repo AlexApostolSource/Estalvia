@@ -5,13 +5,10 @@
 //  Created by Alex.personal on 2/8/25.
 //
 
+
+
+
 import UIKit
-
-
-
-
-
-
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

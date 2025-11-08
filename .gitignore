@@ -55,3 +55,16 @@ playground.xcworkspace
 *.swp
 *.swo
 *.DS_Store
+
+# SwiftLint cache
+.swiftlint-cache
+
+# Generated / temp plist/diff files
+*.plist
+*.plis
+
+# Temp diffs/patches
+*.orig
+*.rej
+*.patch
+*.diff

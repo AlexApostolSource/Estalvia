@@ -11,14 +11,15 @@ import SwiftUI
 struct HomeView: View {
 	var body: some View {
 		VStack {
+			Spacer()
 			HStack {
-				Spacer()
+				Spacer(minLength: 0)
 				Button("+") {}.estalviaPrimaryButton(
 					size: .circle,
 					color: .estalviaPrimaryGreen
-				)
+				).frame(maxWidth: 44).padding(.trailing, 24)
 			}
-		}
+		}.padding(.bottom, 16)
 	}
 }
 

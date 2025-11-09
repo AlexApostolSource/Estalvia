@@ -21,17 +21,16 @@ public struct EstalviaPrimaryButtonStyle: SwiftUI.ButtonStyle {
 
     public func makeBody(configuration: Configuration) -> some View {
         let radius = cornerRadiusOverride ?? theme.cornerRadius
+		let shape: AnyShape = size == .circle ? AnyShape(Circle()) : AnyShape(RoundedRectangle(cornerRadius: radius))
+
         return  configuration.label
             .font(size.font)
             .multilineTextAlignment(.center)
             .padding(size.padding)
             .frame(maxWidth: .infinity, minHeight: 44)     // área táctil mínima
-            .background(
-                RoundedRectangle(cornerRadius: radius)
-                    .fill(backgroundColorOverride ?? theme.primaryColor)
-            )
+            .background(shape.fill(backgroundColorOverride ?? theme.primaryColor))
             .foregroundStyle(.white)
-            .contentShape(RoundedRectangle(cornerRadius: radius)) // hit test
+            .contentShape(shape) // hit test
             .opacity(isEnabled ? (configuration.isPressed ? 0.9 : 1) : 0.5)
             .scaleEffect(configuration.isPressed ? 0.98 : 1)
             .animation(.smooth, value: configuration.isPressed) // iOS 17

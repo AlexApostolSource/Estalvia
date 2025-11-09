@@ -21,6 +21,9 @@ public struct EstalviaButtonView: View {
             Button("Small Button!") {
                 print("Small Button tapped!")
             }.estalviaPrimaryButton(size: .small, color: .estalviaPrimaryGreen)
+			Button("+") {
+				print("Small Button tapped!")
+			}.estalviaPrimaryButton(size: .circle, color: .estalviaPrimaryGreen)
         }.padding()
 
     }

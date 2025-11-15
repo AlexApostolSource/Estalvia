@@ -10,6 +10,7 @@
 		CBAA413C2E50E42100F632A9 /* SmartLogging in Frameworks */ = {isa = PBXBuildFile; productRef = CBAA413B2E50E42100F632A9 /* SmartLogging */; };
 		CBAA413F2E50E4C100F632A9 /* NetworkLayer in Frameworks */ = {isa = PBXBuildFile; productRef = CBAA413E2E50E4C100F632A9 /* NetworkLayer */; };
 		CBCA97292EC09E650033D2B5 /* EstalviaDesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = CBCA97282EC09E650033D2B5 /* EstalviaDesignSystem */; };
+		CBCA97352EC0FEED0033D2B5 /* SwiftPersistance in Frameworks */ = {isa = PBXBuildFile; productRef = CBCA97342EC0FEED0033D2B5 /* SwiftPersistance */; };
 		CBDD3FAA2E5A21AD00140B11 /* SwiftInject in Frameworks */ = {isa = PBXBuildFile; productRef = CBDD3FA92E5A21AD00140B11 /* SwiftInject */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBCA97352EC0FEED0033D2B5 /* SwiftPersistance in Frameworks */,
 				CBCA97292EC09E650033D2B5 /* EstalviaDesignSystem in Frameworks */,
 				CBAA413C2E50E42100F632A9 /* SmartLogging in Frameworks */,
 				CBDD3FAA2E5A21AD00140B11 /* SwiftInject in Frameworks */,
@@ -126,6 +128,7 @@
 				CBAA413E2E50E4C100F632A9 /* NetworkLayer */,
 				CBDD3FA92E5A21AD00140B11 /* SwiftInject */,
 				CBCA97282EC09E650033D2B5 /* EstalviaDesignSystem */,
+				CBCA97342EC0FEED0033D2B5 /* SwiftPersistance */,
 			);
 			productName = Estalvia;
 			productReference = CBD33DFC2E3E792E0089C92C /* Estalvia.app */;
@@ -539,6 +542,10 @@
 		CBCA97282EC09E650033D2B5 /* EstalviaDesignSystem */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = EstalviaDesignSystem;
+		};
+		CBCA97342EC0FEED0033D2B5 /* SwiftPersistance */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftPersistance;
 		};
 		CBDD3FA92E5A21AD00140B11 /* SwiftInject */ = {
 			isa = XCSwiftPackageProductDependency;

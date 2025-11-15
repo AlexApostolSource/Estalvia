@@ -149,7 +149,17 @@ public struct EstalviaTextField<Leading: View, Trailing: View>: View {
                     if isSecure && !isPasswordVisible {
                         SecureField(placeholder, text: $text)
                     } else {
-                        TextField(placeholder, text: $text)
+						if keyboard == .numberPad {
+							TextField(placeholder, text: $text)
+								.onChange(of: text, { _, newValue in
+									let filtered = newValue.filter { $0.isNumber }
+									if filtered != newValue {
+										text = filtered
+									}
+								})
+						} else {
+							TextField(placeholder, text: $text)
+						}
                     }
                 }
                 .textInputAutocapitalization(autocapitalization)

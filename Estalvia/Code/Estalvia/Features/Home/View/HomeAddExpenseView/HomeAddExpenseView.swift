@@ -9,8 +9,8 @@ import EstalviaDesignSystem
 import SwiftUI
 
 struct HomeViewAddExpenseView: View {
-	@State private var amount: String = ""
-	@State private var description: String = ""
+	@ObservedObject var viewModel: HomeAddExpenseViewModel
+
 	var body: some View {
 		VStack {
 			EstalviaAmountModal(
@@ -18,16 +18,17 @@ struct HomeViewAddExpenseView: View {
 				amountTitle: "Capital",
 				leftButtonTitle: "Cancelar",
 				rightButtonTitle: "Acceptar",
-				amountText: $amount,
-				descriptionBinding: $description,
+				amountText: $viewModel.amount,
+				descriptionBinding: $viewModel.description,
 				description: "Descripción",
 				placeholderAmount: "Capital inicial",
-				placeHolderDescription: ""
-			)
+				placeHolderDescription: "", rightButtonAction:  {
+					viewModel.saveExpense()
+				})
 		}
 	}
 }
 
 #Preview {
-	HomeViewAddExpenseView()
+//	HomeViewAddExpenseView()
 }

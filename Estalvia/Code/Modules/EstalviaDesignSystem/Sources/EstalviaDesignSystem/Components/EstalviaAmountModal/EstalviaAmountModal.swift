@@ -15,6 +15,8 @@ public struct EstalviaAmountModal: View {
     private let rightButtonTitle: String
 	private let placeholderAmount: String
 	private let placeHolderDescription: String
+	private var rightButtonAction: (() -> Void)?
+	private var leftButtonAction: (() -> Void)?
     @Binding private var descriptionBinding: String
     @Binding private var amountText: String
     @Environment(\.dismiss) private var dismiss
@@ -37,10 +39,12 @@ public struct EstalviaAmountModal: View {
 
             HStack {
                 Button(leftButtonTitle) {
+					leftButtonAction?()
                     dismiss()
                 }.estalviaPrimaryButton(size: .large, color: .estalviaPrimaryRed)
                 Spacer()
                 Button(rightButtonTitle) {
+					rightButtonAction?()
                     dismiss()
                 }.estalviaPrimaryButton(
                     size: .large,
@@ -59,7 +63,9 @@ public struct EstalviaAmountModal: View {
 		descriptionBinding: Binding<String>,
 		description: String,
 		placeholderAmount: String,
-		placeHolderDescription: String
+		placeHolderDescription: String,
+		rightButtonAction: (() -> Void)? = nil,
+		leftButtonAction: (() -> Void)? = nil
 	) {
 		self.titleLabel = titleLabel
 		self.amountTitle = amountTitle
@@ -70,6 +76,8 @@ public struct EstalviaAmountModal: View {
 		self.rightButtonTitle = rightButtonTitle
 		self.placeholderAmount = placeholderAmount
 		self.placeHolderDescription = placeHolderDescription
+		self.leftButtonAction = leftButtonAction
+		self.rightButtonAction = rightButtonAction
 	}
 }
 

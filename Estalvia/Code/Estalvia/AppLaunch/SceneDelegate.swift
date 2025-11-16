@@ -5,6 +5,8 @@
 //  Created by Alex.personal on 2/8/25.
 //
 
+import SwiftData
+import SwiftInject
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -17,11 +19,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 	) {
 		guard let windowScene = (scene as? UIWindowScene) else { return }
 
+		DependenciesManager.registerAll()
 		let window = UIWindow(windowScene: windowScene)
 		let rootVC = MainTabBarFactory.createMainTabbar()
-		let rootNvigationController = UINavigationController(rootViewController: rootVC)
+		let rootNavigationController = UINavigationController(rootViewController: rootVC)
 
-		window.rootViewController = rootNvigationController
+		window.rootViewController = rootNavigationController
 		self.window = window
 		window.makeKeyAndVisible()
 	}

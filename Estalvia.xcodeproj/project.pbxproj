@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB8E6ACC2EC9C15E00041108 /* SwiftInject in Frameworks */ = {isa = PBXBuildFile; productRef = CB8E6ACB2EC9C15E00041108 /* SwiftInject */; };
 		CBAA413C2E50E42100F632A9 /* SmartLogging in Frameworks */ = {isa = PBXBuildFile; productRef = CBAA413B2E50E42100F632A9 /* SmartLogging */; };
 		CBAA413F2E50E4C100F632A9 /* NetworkLayer in Frameworks */ = {isa = PBXBuildFile; productRef = CBAA413E2E50E4C100F632A9 /* NetworkLayer */; };
 		CBCA97292EC09E650033D2B5 /* EstalviaDesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = CBCA97282EC09E650033D2B5 /* EstalviaDesignSystem */; };
 		CBCA97352EC0FEED0033D2B5 /* SwiftPersistance in Frameworks */ = {isa = PBXBuildFile; productRef = CBCA97342EC0FEED0033D2B5 /* SwiftPersistance */; };
-		CBDD3FAA2E5A21AD00140B11 /* SwiftInject in Frameworks */ = {isa = PBXBuildFile; productRef = CBDD3FA92E5A21AD00140B11 /* SwiftInject */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,10 +60,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB8E6ACC2EC9C15E00041108 /* SwiftInject in Frameworks */,
 				CBCA97352EC0FEED0033D2B5 /* SwiftPersistance in Frameworks */,
 				CBCA97292EC09E650033D2B5 /* EstalviaDesignSystem in Frameworks */,
 				CBAA413C2E50E42100F632A9 /* SmartLogging in Frameworks */,
-				CBDD3FAA2E5A21AD00140B11 /* SwiftInject in Frameworks */,
 				CBAA413F2E50E4C100F632A9 /* NetworkLayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -126,9 +126,9 @@
 			packageProductDependencies = (
 				CBAA413B2E50E42100F632A9 /* SmartLogging */,
 				CBAA413E2E50E4C100F632A9 /* NetworkLayer */,
-				CBDD3FA92E5A21AD00140B11 /* SwiftInject */,
 				CBCA97282EC09E650033D2B5 /* EstalviaDesignSystem */,
 				CBCA97342EC0FEED0033D2B5 /* SwiftPersistance */,
+				CB8E6ACB2EC9C15E00041108 /* SwiftInject */,
 			);
 			productName = Estalvia;
 			productReference = CBD33DFC2E3E792E0089C92C /* Estalvia.app */;
@@ -188,7 +188,7 @@
 			packageReferences = (
 				CBAA413A2E50E42100F632A9 /* XCRemoteSwiftPackageReference "SmartLogging" */,
 				CBAA413D2E50E4C100F632A9 /* XCRemoteSwiftPackageReference "NetworkLayer" */,
-				CBDD3FA82E5A21AD00140B11 /* XCRemoteSwiftPackageReference "SwiftInject" */,
+				CB8E6ACA2EC9C15E00041108 /* XCLocalSwiftPackageReference "../../RemoteSPM/SwiftInject" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CBD33DFD2E3E792E0089C92C /* Products */;
@@ -501,6 +501,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		CB8E6ACA2EC9C15E00041108 /* XCLocalSwiftPackageReference "../../RemoteSPM/SwiftInject" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../RemoteSPM/SwiftInject;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		CBAA413A2E50E42100F632A9 /* XCRemoteSwiftPackageReference "SmartLogging" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -518,17 +525,13 @@
 				minimumVersion = 2.3.0;
 			};
 		};
-		CBDD3FA82E5A21AD00140B11 /* XCRemoteSwiftPackageReference "SwiftInject" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AlexApostolSource/SwiftInject";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CB8E6ACB2EC9C15E00041108 /* SwiftInject */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftInject;
+		};
 		CBAA413B2E50E42100F632A9 /* SmartLogging */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CBAA413A2E50E42100F632A9 /* XCRemoteSwiftPackageReference "SmartLogging" */;
@@ -546,11 +549,6 @@
 		CBCA97342EC0FEED0033D2B5 /* SwiftPersistance */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftPersistance;
-		};
-		CBDD3FA92E5A21AD00140B11 /* SwiftInject */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CBDD3FA82E5A21AD00140B11 /* XCRemoteSwiftPackageReference "SwiftInject" */;
-			productName = SwiftInject;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

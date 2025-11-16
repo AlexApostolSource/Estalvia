@@ -1,5 +1,5 @@
 {
-  "originHash" : "167bab01123a1c8a4c4cd2e71f0c24247bc80223f7ab3be4ba8a34895cb0af9f",
+  "originHash" : "346ad2f8fa6fb0d39b95ada8b1d940ac1e75eb946e01c8e9697fef058d47a519",
   "pins" : [
     {
       "identity" : "networklayer",
@@ -17,15 +17,6 @@
       "state" : {
         "revision" : "acb6d272e9004dee06054b8013cfe9c7b2d6ba1a",
         "version" : "2.1.1"
-      }
-    },
-    {
-      "identity" : "swiftinject",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/AlexApostolSource/SwiftInject",
-      "state" : {
-        "revision" : "3708bfd14d8176f045229134dad4a560fd4f07f6",
-        "version" : "2.0.2"
       }
     }
   ],

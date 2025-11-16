@@ -23,7 +23,7 @@ struct HomeView: View {
 				).frame(maxWidth: 44).padding(.trailing, 24)
 					.sheet(isPresented: $isSheetPresented) {
 					} content: {
-						HomeViewAddExpenseView()
+						HomeFactory.makeAddExpenseView()
 						.presentationDetents([.medium])
 					}
 

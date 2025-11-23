@@ -18,6 +18,7 @@ final class HomeAddExpenseViewModel: ObservableObject {
 	}
 
 	func saveExpense() {
+		guard !amount.isEmpty, !description.isEmpty else { return }
 		useCase.saveExpense(amount: amount, description: description)
 	}
 }

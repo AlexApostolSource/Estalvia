@@ -10,7 +10,7 @@ import SwiftPersistance
 
 struct HomeFactory {
 	static func makeAddExpenseView() -> HomeViewAddExpenseView {
-		let modelContext: ModelContext = DependencyContainer.resolve(\.persistentContainer)
+		let modelContext: ModelContext = DependencyContainer.resolve(ModelContextKey.self)
 		let localDataSourceProvider = SwiftPersistSwiftDataProvider(context: modelContext)
 		let repo = HomeRepository(localDataSourceProvider: localDataSourceProvider)
 		let useCase = HomeSaveExpanseUseCase(repository: repo)

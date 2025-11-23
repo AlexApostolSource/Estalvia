@@ -11,7 +11,7 @@ extension DependenciesManager {
 	static func registerModelContext() {
 		do {
 			let modelContext: ModelContext = try ModelContextFactory.create()
-			DependencyContainer.register(\.persistentContainer, modelContext)
+			DependencyContainer.register(ModelContextKey.self, modelContext)
 		} catch {
 			print(error)
 		}

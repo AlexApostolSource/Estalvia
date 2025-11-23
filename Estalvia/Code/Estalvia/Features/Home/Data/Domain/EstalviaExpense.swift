@@ -7,10 +7,9 @@
 
 import Foundation
 
-public struct EstalviaExpense {
+public struct EstalviaExpense: Identifiable {
 	public let id: String
 	public let name: String
 	public let amount: Double
 	public let date: Date
-
 }

@@ -8,5 +8,6 @@
 struct DependenciesManager {
 	static func registerAll() {
 		registerModelContext()
+		registerHomeRepository()
 	}
 }

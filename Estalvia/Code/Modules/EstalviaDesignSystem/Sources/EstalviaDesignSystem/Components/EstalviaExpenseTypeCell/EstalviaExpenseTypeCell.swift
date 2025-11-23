@@ -12,6 +12,12 @@ public struct EstalviaExpenseTypeCellConfig {
 	public let amount: String
 	public let description: String
 	let currencyHelper = CurrencySymbolHelper.symbol()
+
+	public init(title: String, amount: String, description: String) {
+		self.title = title
+		self.amount = amount
+		self.description = description
+	}
 }
 
 public struct EstalviaExpenseTypeCell: View {

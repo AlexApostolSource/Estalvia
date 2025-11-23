@@ -7,10 +7,24 @@
 
 import SwiftData
 
+@MainActor
 struct ModelContextFactory {
 	static func create() throws -> ModelContext {
-		let container = try ModelContainer(configurations: .init())
-		return ModelContext(container)
+			let schema = Schema([
+				EstalviaExpenseRemote.self
+			])
+
+			let configuration = ModelConfiguration(
+				schema: schema,
+				isStoredInMemoryOnly: false
+			)
+
+			let container = try ModelContainer(
+				for: schema,
+				configurations: [configuration]
+			)
+
+			return ModelContext(container)
 	}
 }
 

@@ -9,9 +9,18 @@ import EstalviaDesignSystem
 import SwiftUI
 
 struct HomeView: View {
+	@State var viewModel: HomeViewModel
+
 	@State private var isSheetPresented = false
 	var body: some View {
 		VStack {
+			List(viewModel.expenses) { expense in
+				HomeFactory.makeExpenseListView(from: expense).swipeActions {
+					Button("Delete") {
+						print("Delete")
+					}
+				}
+			}
 			Spacer()
 			HStack {
 				Spacer(minLength: 0)
@@ -24,20 +33,24 @@ struct HomeView: View {
 					.sheet(isPresented: $isSheetPresented) {
 					} content: {
 						HomeFactory.makeAddExpenseView()
-						.presentationDetents([.medium])
+							.presentationDetents([.medium])
 					}
 
 			}
-		}.padding(.bottom, 16)
+		}.onAppear(perform: {
+			viewModel.getExpenses()
+		}).padding(.bottom, 16)
 	}
 
 	public init(
 		isSheetPresented: Bool = false,
+		viewModel: HomeViewModel
 	) {
+		self.viewModel = viewModel
 		self.isSheetPresented = isSheetPresented
 	}
 }
 
-#Preview {
-	HomeView()
-}
+//#Preview {
+//	HomeView(viewModel: H)
+//}

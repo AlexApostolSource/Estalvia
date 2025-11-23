@@ -4,18 +4,42 @@
 //
 //  Created by Alex.personal on 15/11/25.
 //
+import EstalviaDesignSystem
+import Foundation
 import SwiftData
 import SwiftInject
 import SwiftPersistance
 
 struct HomeFactory {
 	static func makeAddExpenseView() -> HomeViewAddExpenseView {
-		let modelContext: ModelContext = DependencyContainer.resolve(ModelContextKey.self)
-		let localDataSourceProvider = SwiftPersistSwiftDataProvider(context: modelContext)
-		let repo = HomeRepository(localDataSourceProvider: localDataSourceProvider)
+		let repo: HomeRepositoryProtocol = DependencyContainer.resolve(HomeRepositoryKey.self)
 		let useCase = HomeSaveExpanseUseCase(repository: repo)
 		let viewModel = HomeAddExpenseViewModel(useCase: useCase)
 		let view = HomeViewAddExpenseView(viewModel: viewModel)
 		return view
+	}
+
+	static func makeExpenseListView(from expense: EstalviaExpense) -> EstalviaExpenseTypeCell {
+		EstalviaExpenseTypeCell(
+			config: EstalviaExpenseTypeCellConfig(
+				title: expense.name,
+				amount: expense.amount.formatted(),
+				description: expense.date.description
+			)
+		)
+	}
+
+	static func createHomeView() -> HomeView {
+		let repo: HomeRepositoryProtocol = DependencyContainer.resolve(HomeRepositoryKey.self)
+		let useCase = HomeGetExpenseUseCase(repository: repo)
+		let viewModel = HomeViewModel(useCase: useCase)
+		let view = HomeView(viewModel: viewModel)
+		return view
+	}
+
+	static func createRepository() -> HomeRepository {
+		let modelContext: ModelContext = DependencyContainer.resolve(ModelContextKey.self)
+		let localDataSourceProvider = SwiftPersistSwiftDataProvider(context: modelContext)
+		return HomeRepository(localDataSourceProvider: localDataSourceProvider)
 	}
 }

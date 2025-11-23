@@ -10,7 +10,7 @@ import UIKit
 public final class MainTabBarFactory {
 	static func createMainTabbar() -> UIViewController {
 		let tab = HomeTab(title: "Home", image: UIImage(systemName: "house"), identifier: "homeId") { _ in
-			UIHostingController(rootView: HomeView())
+			UIHostingController(rootView: HomeFactory.createHomeView())
 		}
 
 		let tab2 = HomeTab(title: "Home", image: UIImage(systemName: "house"), identifier: "homeId2") { _ in

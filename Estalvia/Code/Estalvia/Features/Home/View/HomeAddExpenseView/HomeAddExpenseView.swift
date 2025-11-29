@@ -10,6 +10,12 @@ import SwiftUI
 
 struct HomeViewAddExpenseView: View {
 	@ObservedObject var viewModel: HomeAddExpenseViewModel
+	private var onSaved: (() -> Void)?
+
+	public init(viewModel: HomeAddExpenseViewModel, onSaved: (() -> Void)? = nil) {
+		self.viewModel = viewModel
+		self.onSaved = onSaved
+	}
 
 	var body: some View {
 		VStack {
@@ -22,8 +28,9 @@ struct HomeViewAddExpenseView: View {
 				descriptionBinding: $viewModel.description,
 				description: "Descripción",
 				placeholderAmount: "Capital inicial",
-				placeHolderDescription: "", rightButtonAction:  {
+				placeHolderDescription: "", rightButtonAction: {
 					viewModel.saveExpense()
+					onSaved?()
 				})
 		}
 	}

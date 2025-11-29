@@ -16,9 +16,11 @@ struct HomeView: View {
 		VStack {
 			List(viewModel.expenses) { expense in
 				HomeFactory.makeExpenseListView(from: expense).swipeActions {
-					Button("Delete") {
-						print("Delete")
-					}
+					Button(role: .destructive) {
+						viewModel.deleteExpense(expense)
+					} label: {
+						Label("Delete", systemImage: "trash.fill")
+					}.estalviaTheme(.medium)
 				}
 			}
 			Spacer()
@@ -32,8 +34,9 @@ struct HomeView: View {
 				).frame(maxWidth: 44).padding(.trailing, 24)
 					.sheet(isPresented: $isSheetPresented) {
 					} content: {
-						HomeFactory.makeAddExpenseView()
-							.presentationDetents([.medium])
+						HomeFactory.makeAddExpenseView(onSaved: {
+							viewModel.getExpenses()
+						}).presentationDetents([.medium])
 					}
 
 			}
@@ -51,6 +54,6 @@ struct HomeView: View {
 	}
 }
 
-//#Preview {
+// #Preview {
 //	HomeView(viewModel: H)
-//}
+// }

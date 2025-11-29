@@ -11,11 +11,11 @@ import SwiftInject
 import SwiftPersistance
 
 struct HomeFactory {
-	static func makeAddExpenseView() -> HomeViewAddExpenseView {
+	static func makeAddExpenseView(onSaved: @escaping () -> Void = {}) -> HomeViewAddExpenseView {
 		let repo: HomeRepositoryProtocol = DependencyContainer.resolve(HomeRepositoryKey.self)
 		let useCase = HomeSaveExpanseUseCase(repository: repo)
 		let viewModel = HomeAddExpenseViewModel(useCase: useCase)
-		let view = HomeViewAddExpenseView(viewModel: viewModel)
+		let view = HomeViewAddExpenseView(viewModel: viewModel, onSaved: onSaved)
 		return view
 	}
 
@@ -32,7 +32,8 @@ struct HomeFactory {
 	static func createHomeView() -> HomeView {
 		let repo: HomeRepositoryProtocol = DependencyContainer.resolve(HomeRepositoryKey.self)
 		let useCase = HomeGetExpenseUseCase(repository: repo)
-		let viewModel = HomeViewModel(useCase: useCase)
+		let deleteExpenseUseCase = HomeDeleteExpenseUseCase(repository: repo)
+		let viewModel = HomeViewModel(useCase: useCase, deleteExpenseUseCase: deleteExpenseUseCase)
 		let view = HomeView(viewModel: viewModel)
 		return view
 	}

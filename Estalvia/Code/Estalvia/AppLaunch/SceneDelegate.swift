@@ -10,6 +10,7 @@ import SwiftInject
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+	private var coordinator: (any EstalviaCoordinatorProtocol)?
 
 	var window: UIWindow?
 	func scene(
@@ -21,10 +22,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 		DependenciesManager.registerAll()
 		let window = UIWindow(windowScene: windowScene)
-		let rootVC = MainTabBarFactory.createMainTabbar()
-		let rootNavigationController = UINavigationController(rootViewController: rootVC)
-
-		window.rootViewController = rootNavigationController
+		let navigationController = UINavigationController()
+		coordinator = EstalviaCoordinator(navigationController: navigationController)
+		coordinator?.start()
+		window.rootViewController = navigationController
 		self.window = window
 		window.makeKeyAndVisible()
 	}

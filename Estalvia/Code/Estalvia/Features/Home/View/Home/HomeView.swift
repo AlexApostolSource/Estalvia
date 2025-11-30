@@ -11,8 +11,6 @@ import SwiftUI
 struct HomeView<Coordinator: EstalviaNavigationCoordinatorProtocol>: View
 where Coordinator.State == HomeCoordinator.State {
 	@State var viewModel: HomeViewModel<Coordinator>
-
-	@State private var isSheetPresented = false
 	var body: some View {
 		VStack {
 			List(viewModel.expenses) { expense in
@@ -42,11 +40,9 @@ where Coordinator.State == HomeCoordinator.State {
 	}
 
 	public init(
-		isSheetPresented: Bool = false,
 		viewModel: HomeViewModel<Coordinator>
 	) {
 		self.viewModel = viewModel
-		self.isSheetPresented = isSheetPresented
 	}
 }
 

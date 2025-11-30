@@ -11,6 +11,7 @@ import UIKit
 final class HomeCoordinator: EstalviaNavigationCoordinatorProtocol {
 	enum State {
 		case initial
+		case showAddExpenseView(onSaved: (() -> Void)? = nil)
 	}
 
 	private var currentState: State = .initial
@@ -34,12 +35,35 @@ final class HomeCoordinator: EstalviaNavigationCoordinatorProtocol {
 	}
 
 	func start() {
-		buildHome()
+		loop(to: currentState)
+	}
+
+	func loop(to state: State) {
+		switch state {
+		case .initial:
+			buildHome()
+		case .showAddExpenseView(let onSaved):
+			showAddExpenseView(onSaved: onSaved)
+		}
 	}
 
 	private func buildHome() {
-		let homeView = HomeFactory.createHomeView()
+		let homeView = HomeFactory.createHomeView(coordinator: self)
 		let hostVC = UIHostingController(rootView: homeView)
 		navigationController.setViewControllers([hostVC], animated: false)
+	}
+
+	private func showAddExpenseView(onSaved: (() -> Void)? = nil) {
+		let addExpenseView = HomeFactory.makeAddExpenseView(onSaved: onSaved)
+		let hostVC = UIHostingController(rootView: addExpenseView)
+		hostVC.modalPresentationStyle = .pageSheet
+
+		if let sheet = hostVC.sheetPresentationController {
+			sheet.detents = [.medium()]              // equivalente a .presentationDetents([.medium])
+			sheet.prefersGrabberVisible = true       // opcional, muestra el “tirador”
+			sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+			sheet.largestUndimmedDetentIdentifier = .medium
+		}
+		navigationController.present(hostVC, animated: true)
 	}
 }

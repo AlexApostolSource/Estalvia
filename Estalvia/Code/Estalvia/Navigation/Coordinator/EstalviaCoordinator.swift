@@ -19,6 +19,7 @@ protocol EstalviaCoordinatorProtocol {
 	var childCoordinators: [any EstalviaCoordinatorProtocol] { get }
 	var parentCoordinator: (any EstalviaCoordinatorProtocol)? { get }
 	associatedtype State
+	func loop(to: State)
 }
 
 @MainActor
@@ -44,6 +45,13 @@ final class EstalviaCoordinator: EstalviaCoordinatorProtocol {
 
 	func start() {
 		showTabBar()
+	}
+
+	func loop(to: State) {
+		switch to {
+		case .initial:
+			showTabBar()
+		}
 	}
 
 	private func showTabBar() {

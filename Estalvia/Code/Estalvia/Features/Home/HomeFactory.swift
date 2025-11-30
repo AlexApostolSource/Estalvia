@@ -11,7 +11,7 @@ import SwiftInject
 import SwiftPersistance
 
 struct HomeFactory {
-	static func makeAddExpenseView(onSaved: @escaping () -> Void = {}) -> HomeViewAddExpenseView {
+	static func makeAddExpenseView(onSaved: (() -> Void)? = nil ) -> HomeViewAddExpenseView {
 		let repo: HomeRepositoryProtocol = DependencyContainer.resolve(HomeRepositoryKey.self)
 		let useCase = HomeSaveExpanseUseCase(repository: repo)
 		let viewModel = HomeAddExpenseViewModel(useCase: useCase)
@@ -29,11 +29,13 @@ struct HomeFactory {
 		)
 	}
 
-	static func createHomeView() -> HomeView {
+	static func createHomeView<Coordinator: EstalviaNavigationCoordinatorProtocol>(
+		coordinator: Coordinator
+	) -> HomeView<Coordinator> where Coordinator.State == HomeCoordinator.State {
 		let repo: HomeRepositoryProtocol = DependencyContainer.resolve(HomeRepositoryKey.self)
 		let useCase = HomeGetExpenseUseCase(repository: repo)
 		let deleteExpenseUseCase = HomeDeleteExpenseUseCase(repository: repo)
-		let viewModel = HomeViewModel(useCase: useCase, deleteExpenseUseCase: deleteExpenseUseCase)
+		let viewModel = HomeViewModel(useCase: useCase, deleteExpenseUseCase: deleteExpenseUseCase, coordinator: coordinator)
 		let view = HomeView(viewModel: viewModel)
 		return view
 	}

@@ -8,8 +8,9 @@
 import EstalviaDesignSystem
 import SwiftUI
 
-struct HomeView: View {
-	@State var viewModel: HomeViewModel
+struct HomeView<Coordinator: EstalviaNavigationCoordinatorProtocol>: View
+where Coordinator.State == HomeCoordinator.State {
+	@State var viewModel: HomeViewModel<Coordinator>
 
 	@State private var isSheetPresented = false
 	var body: some View {
@@ -27,18 +28,13 @@ struct HomeView: View {
 			HStack {
 				Spacer(minLength: 0)
 				Button("+") {
-					isSheetPresented.toggle()
+					viewModel.didPressAddExpense {
+						viewModel.getExpenses()
+					}
 				}.estalviaPrimaryButton(
 					size: .circle,
 					color: .estalviaPrimaryGreen
 				).frame(maxWidth: 44).padding(.trailing, 24)
-					.sheet(isPresented: $isSheetPresented) {
-					} content: {
-						HomeFactory.makeAddExpenseView(onSaved: {
-							viewModel.getExpenses()
-						}).presentationDetents([.medium])
-					}
-
 			}
 		}.onAppear(perform: {
 			viewModel.getExpenses()
@@ -47,7 +43,7 @@ struct HomeView: View {
 
 	public init(
 		isSheetPresented: Bool = false,
-		viewModel: HomeViewModel
+		viewModel: HomeViewModel<Coordinator>
 	) {
 		self.viewModel = viewModel
 		self.isSheetPresented = isSheetPresented

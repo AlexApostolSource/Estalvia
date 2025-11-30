@@ -52,6 +52,7 @@ identifier_name:
   excluded:
     - id
     - URL
+    - to
 
 cyclomatic_complexity:
   warning: 10

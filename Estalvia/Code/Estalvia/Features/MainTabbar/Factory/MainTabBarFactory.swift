@@ -8,9 +8,9 @@ import SwiftUI
 import UIKit
 
 public final class MainTabBarFactory {
-	static func createMainTabbar() -> UIViewController {
+	static func createMainTabbar(homeNavigationController: UINavigationController) -> UIViewController {
 		let tab = HomeTab(title: "Home", image: UIImage(systemName: "house"), identifier: "homeId") { _ in
-			UIHostingController(rootView: HomeFactory.createHomeView())
+			homeNavigationController
 		}
 
 		let tab2 = HomeTab(title: "Home", image: UIImage(systemName: "house"), identifier: "homeId2") { _ in

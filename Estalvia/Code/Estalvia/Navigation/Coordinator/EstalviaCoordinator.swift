@@ -5,11 +5,16 @@
 //  Created by Alex.personal on 29/11/25.
 //
 
+import SwiftUI
 import UIKit
 
 @MainActor
-protocol EstalviaCoordinatorProtocol {
+protocol EstalviaNavigationCoordinatorProtocol: EstalviaCoordinatorProtocol {
 	var navigationController: UINavigationController { get }
+}
+
+@MainActor
+protocol EstalviaCoordinatorProtocol {
 	func start()
 	var childCoordinators: [any EstalviaCoordinatorProtocol] { get }
 	var parentCoordinator: (any EstalviaCoordinatorProtocol)? { get }
@@ -21,7 +26,7 @@ final class EstalviaCoordinator: EstalviaCoordinatorProtocol {
 	var state: State = .initial
 	var childCoordinators: [any EstalviaCoordinatorProtocol]
 	var parentCoordinator: (any EstalviaCoordinatorProtocol)?
-	var navigationController: UINavigationController
+	private let window: UIWindow
 
 	enum State {
 		case initial
@@ -30,11 +35,11 @@ final class EstalviaCoordinator: EstalviaCoordinatorProtocol {
 	init(
 		childCoordinators: [any EstalviaCoordinatorProtocol] = [],
 		parentCoordinator: (any EstalviaCoordinatorProtocol)? = nil,
-		navigationController: UINavigationController
+		window: UIWindow
 	) {
 		self.childCoordinators = childCoordinators
 		self.parentCoordinator = parentCoordinator
-		self.navigationController = navigationController
+		self.window = window
 	}
 
 	func start() {
@@ -42,7 +47,13 @@ final class EstalviaCoordinator: EstalviaCoordinatorProtocol {
 	}
 
 	private func showTabBar() {
-		let tabar = MainTabBarFactory.createMainTabbar()
-		navigationController.setViewControllers([tabar], animated: false)
+		let homeNavController = UINavigationController()
+		let homeCoordinator = HomeCoordinator(navigationController: homeNavController, parentCoordinator: self)
+		childCoordinators.append(homeCoordinator)
+		homeCoordinator.start()
+
+		let tabbar = MainTabBarFactory.createMainTabbar(homeNavigationController: homeNavController)
+
+		window.rootViewController = tabbar
 	}
 }

@@ -22,10 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 		DependenciesManager.registerAll()
 		let window = UIWindow(windowScene: windowScene)
-		let navigationController = UINavigationController()
-		coordinator = EstalviaCoordinator(navigationController: navigationController)
+		coordinator = EstalviaCoordinator(window: window)
 		coordinator?.start()
-		window.rootViewController = navigationController
 		self.window = window
 		window.makeKeyAndVisible()
 	}

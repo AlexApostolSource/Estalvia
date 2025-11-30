@@ -48,7 +48,7 @@ final class HomeCoordinator: EstalviaNavigationCoordinatorProtocol {
 	}
 
 	private func buildHome() {
-		let homeView = HomeFactory.createHomeView(coordinator: self)
+		let homeView = HomeFactory.createHomeView(navigationOutput: self)
 		let hostVC = UIHostingController(rootView: homeView)
 		navigationController.setViewControllers([hostVC], animated: false)
 	}
@@ -65,5 +65,11 @@ final class HomeCoordinator: EstalviaNavigationCoordinatorProtocol {
 			sheet.largestUndimmedDetentIdentifier = .medium
 		}
 		navigationController.present(hostVC, animated: true)
+	}
+}
+
+extension HomeCoordinator: HomeNavigationOutputs {
+	func showAddExpense(onSaved: (() -> Void)?) {
+		self.loop(to: .showAddExpenseView(onSaved: onSaved))
 	}
 }

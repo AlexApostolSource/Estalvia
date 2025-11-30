@@ -9,22 +9,21 @@ import Combine
 import SwiftUI
 
 @Observable
-final class HomeViewModel<Coordinator: EstalviaNavigationCoordinatorProtocol>
-where Coordinator.State == HomeCoordinator.State {
+final class HomeViewModel {
 	private let useCase: HomeGetExpenseUseCaseProtocol
 	private let deleteExpenseUseCase: HomeDeleteExpenseUseCaseProtocol
-	private let coordinator: Coordinator
+	private let navigationOutput: HomeNavigationOutputs
 
 	private(set) var expenses: [EstalviaExpense] = []
 
 	init(
 		useCase: HomeGetExpenseUseCaseProtocol,
 		deleteExpenseUseCase: HomeDeleteExpenseUseCaseProtocol,
-		coordinator: Coordinator
+		navigationOutput: HomeNavigationOutputs
 	) {
 		self.useCase = useCase
 		self.deleteExpenseUseCase = deleteExpenseUseCase
-		self.coordinator = coordinator
+		self.navigationOutput = navigationOutput
 	}
 
 	func getExpenses() {
@@ -46,6 +45,6 @@ where Coordinator.State == HomeCoordinator.State {
 	}
 
 	func didPressAddExpense(onSaved: (() -> Void)? = nil) {
-		coordinator.loop(to: .showAddExpenseView(onSaved: onSaved))
+		navigationOutput.showAddExpense(onSaved: onSaved)
 	}
 }

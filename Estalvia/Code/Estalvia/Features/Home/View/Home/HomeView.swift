@@ -8,9 +8,8 @@
 import EstalviaDesignSystem
 import SwiftUI
 
-struct HomeView<Coordinator: EstalviaNavigationCoordinatorProtocol>: View
-where Coordinator.State == HomeCoordinator.State {
-	@State var viewModel: HomeViewModel<Coordinator>
+struct HomeView: View {
+	@State var viewModel: HomeViewModel
 	var body: some View {
 		VStack {
 			List(viewModel.expenses) { expense in
@@ -40,7 +39,7 @@ where Coordinator.State == HomeCoordinator.State {
 	}
 
 	public init(
-		viewModel: HomeViewModel<Coordinator>
+		viewModel: HomeViewModel
 	) {
 		self.viewModel = viewModel
 	}

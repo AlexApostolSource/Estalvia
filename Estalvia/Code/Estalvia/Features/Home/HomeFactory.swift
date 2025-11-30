@@ -29,13 +29,11 @@ struct HomeFactory {
 		)
 	}
 
-	static func createHomeView<Coordinator: EstalviaNavigationCoordinatorProtocol>(
-		coordinator: Coordinator
-	) -> HomeView<Coordinator> where Coordinator.State == HomeCoordinator.State {
+	static func createHomeView(navigationOutput: HomeNavigationOutputs) -> HomeView {
 		let repo: HomeRepositoryProtocol = DependencyContainer.resolve(HomeRepositoryKey.self)
 		let useCase = HomeGetExpenseUseCase(repository: repo)
 		let deleteExpenseUseCase = HomeDeleteExpenseUseCase(repository: repo)
-		let viewModel = HomeViewModel(useCase: useCase, deleteExpenseUseCase: deleteExpenseUseCase, coordinator: coordinator)
+		let viewModel = HomeViewModel(useCase: useCase, deleteExpenseUseCase: deleteExpenseUseCase, navigationOutput: navigationOutput)
 		let view = HomeView(viewModel: viewModel)
 		return view
 	}

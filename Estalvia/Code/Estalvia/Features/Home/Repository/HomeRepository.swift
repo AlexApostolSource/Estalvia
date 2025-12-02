@@ -50,6 +50,25 @@ public struct HomeRepository: HomeRepositoryProtocol {
 		// 5. Borramos esa instancia concreta
 		try localDataSourceProvider.delete(remote)
 	}
+
+	func update(expense: EstalviaExpense) throws {
+		// 1. Buscar el modelo de persistencia en SwiftData usando su id de dominio
+		var descriptor = FetchDescriptor<EstalviaExpenseRemote>()
+		descriptor.predicate = #Predicate { $0.id == expense.id }
+		descriptor.fetchLimit = 1
+
+		let persisted: EstalviaExpenseRemote = try localDataSourceProvider.fetch(descriptor)
+
+		// 2. Mapear campos de dominio → persistencia
+		persisted.amount = expense.amount
+		persisted.date = expense.date
+		persisted.childs = expense.child.map { children in
+			children.map { ExpenseMapper.map(from: $0) }
+		}
+		persisted.name = expense.name
+
+		try localDataSourceProvider.saveContext()
+	}
 }
 
 struct ExpenseMapper {

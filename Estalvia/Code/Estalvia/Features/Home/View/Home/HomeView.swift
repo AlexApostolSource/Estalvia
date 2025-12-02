@@ -12,15 +12,9 @@ struct HomeView: View {
 	@State var viewModel: HomeViewModel
 	var body: some View {
 		VStack {
-			List(viewModel.expenses) { expense in
-				HomeFactory.makeExpenseListView(from: expense).swipeActions {
-					Button(role: .destructive) {
-						viewModel.deleteExpense(expense)
-					} label: {
-						Label("Delete", systemImage: "trash.fill")
-					}.estalviaTheme(.medium)
-				}
-			}
+			ExpenseListView(expenses: viewModel.expenses, action: ExpenseListViewSwipeAction(destructiveAction: { expense in
+				viewModel.deleteExpense(expense)
+			}))
 			Spacer()
 			HStack {
 				Spacer(minLength: 0)

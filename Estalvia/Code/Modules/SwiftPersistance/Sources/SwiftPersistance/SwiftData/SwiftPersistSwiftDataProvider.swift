@@ -76,6 +76,9 @@ public protocol SwiftPersistanceSwiftData {
 	/// let user: User? = try provider.fetch(d)
 	/// ```
 	func fetch<T>(_ descriptor: FetchDescriptor<T>) throws -> T where T: EstalviaSwiftDataSourceEntity
+
+	/// Saves Contest
+	func saveContext() throws
 }
 
 public struct SwiftPersistSwiftDataProvider: SwiftPersistanceSwiftData {
@@ -114,6 +117,10 @@ public struct SwiftPersistSwiftDataProvider: SwiftPersistanceSwiftData {
 	}
 	public func delete<T>(_ entity: T) throws where T: EstalviaSwiftDataSourceEntity {
 		context.delete(entity)
+		try context.save()
+	}
+
+	public func saveContext() throws {
 		try context.save()
 	}
 }

@@ -39,6 +39,7 @@ final class HomeCoordinator: EstalviaNavigationCoordinatorProtocol {
 	}
 
 	func loop(to state: State) {
+		currentState = state
 		switch state {
 		case .initial:
 			buildHome()

@@ -14,11 +14,13 @@ public final class EstalviaExpenseRemote {
 	public var name: String
 	public var amount: Double
 	public var date: Date
+	public var childs: [EstalviaExpenseRemote]?
 
-	init(id: String, name: String, amount: Double, date: Date) {
+	public init(id: String, name: String, amount: Double, date: Date, childs: [EstalviaExpenseRemote]? = nil) {
 		self.id = id
 		self.name = name
 		self.amount = amount
 		self.date = date
+		self.childs = childs
 	}
 }

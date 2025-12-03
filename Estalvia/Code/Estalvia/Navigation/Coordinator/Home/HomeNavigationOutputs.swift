@@ -8,4 +8,6 @@
 @MainActor
 protocol HomeNavigationOutputs: AnyObject {
 	func showAddExpense(onSaved: (() -> Void)?)
+	func showAddExpenseChild(expense: EstalviaExpense, onSaved: (() -> Void)?)
+	func showParentExpenseDetail(expense: EstalviaExpense)
 }

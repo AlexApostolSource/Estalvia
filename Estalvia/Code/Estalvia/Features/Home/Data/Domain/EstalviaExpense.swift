@@ -12,9 +12,9 @@ public struct EstalviaExpense: Identifiable {
 	public let name: String
 	public let amount: Double
 	public let date: Date
-	public let child: [EstalviaExpense]?
+	public var child: [EstalviaExpense]?
 
-	public init(id: String, name: String, amount: Double, date: Date, child: [EstalviaExpense]? = nil) {
+	public init(id: String, name: String, amount: Double, date: Date, child: [EstalviaExpense]?) {
 		self.id = id
 		self.name = name
 		self.amount = amount

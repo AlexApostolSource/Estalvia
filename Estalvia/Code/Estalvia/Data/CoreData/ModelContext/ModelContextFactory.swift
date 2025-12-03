@@ -16,7 +16,8 @@ struct ModelContextFactory {
 
 			let configuration = ModelConfiguration(
 				schema: schema,
-				isStoredInMemoryOnly: false
+				isStoredInMemoryOnly: false,
+				allowsSave: true
 			)
 
 			let container = try ModelContainer(

@@ -13,6 +13,7 @@ public protocol HomeRepositoryProtocol {
 	func save(entity: EstalviaExpense) throws
 	func getExpenses() throws -> [EstalviaExpense]
 	func deleteExpense(expense: EstalviaExpense) throws
+	func update(expense: EstalviaExpense) throws
 }
 
 public struct HomeRepository: HomeRepositoryProtocol {
@@ -23,13 +24,13 @@ public struct HomeRepository: HomeRepositoryProtocol {
 	}
 
 	public func save(entity: EstalviaExpense) throws {
-		try localDataSourceProvider.save(entity: ExpenseMapper.map(from: entity))
+		try localDataSourceProvider.save(entity: ExpenseMapper.toRemote(entity))
 	}
 
 	public func getExpenses() throws -> [EstalviaExpense] {
 		let entities: [EstalviaExpenseRemote] = try localDataSourceProvider.getAll()
 
-		return entities.map { ExpenseMapper.map(from: $0) }
+		return entities.map { ExpenseMapper.toDomain($0) }
 	}
 
 	public func deleteExpense(expense: EstalviaExpense) throws {
@@ -51,10 +52,14 @@ public struct HomeRepository: HomeRepositoryProtocol {
 		try localDataSourceProvider.delete(remote)
 	}
 
-	func update(expense: EstalviaExpense) throws {
+	public func update(expense: EstalviaExpense) throws {
 		// 1. Buscar el modelo de persistencia en SwiftData usando su id de dominio
+		let expenseId = expense.id
+
 		var descriptor = FetchDescriptor<EstalviaExpenseRemote>()
-		descriptor.predicate = #Predicate { $0.id == expense.id }
+			descriptor.predicate = #Predicate<EstalviaExpenseRemote> { remote in
+				remote.id == expenseId
+			}
 		descriptor.fetchLimit = 1
 
 		let persisted: EstalviaExpenseRemote = try localDataSourceProvider.fetch(descriptor)
@@ -63,7 +68,7 @@ public struct HomeRepository: HomeRepositoryProtocol {
 		persisted.amount = expense.amount
 		persisted.date = expense.date
 		persisted.childs = expense.child.map { children in
-			children.map { ExpenseMapper.map(from: $0) }
+			children.map { ExpenseMapper.toRemote($0) }
 		}
 		persisted.name = expense.name
 
@@ -72,25 +77,26 @@ public struct HomeRepository: HomeRepositoryProtocol {
 }
 
 struct ExpenseMapper {
-	static func map(
-		from domainEntity: EstalviaExpense
-	) -> EstalviaExpenseRemote {
+
+	// Dominio -> Persistencia
+	static func toRemote(_ domain: EstalviaExpense) -> EstalviaExpenseRemote {
 		EstalviaExpenseRemote(
-			id: domainEntity.id,
-			name: domainEntity.name,
-			amount: domainEntity.amount,
-			date: domainEntity.date
+			id: domain.id,
+			name: domain.name,
+			amount: domain.amount,
+			date: domain.date,
+			childs: domain.child?.map { toRemote($0) }    // hijos recursivos
 		)
 	}
 
-	static func map(
-		from domainEntity: EstalviaExpenseRemote
-	) -> EstalviaExpense {
+	// Persistencia -> Dominio
+	static func toDomain(_ remote: EstalviaExpenseRemote) -> EstalviaExpense {
 		EstalviaExpense(
-			id: domainEntity.id,
-			name: domainEntity.name,
-			amount: domainEntity.amount,
-			date: domainEntity.date
+			id: remote.id,
+			name: remote.name,
+			amount: remote.amount,
+			date: remote.date,
+			child: remote.childs?.map { toDomain($0) }
 		)
 	}
 }

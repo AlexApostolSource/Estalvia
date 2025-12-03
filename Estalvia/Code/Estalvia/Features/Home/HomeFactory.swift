@@ -19,6 +19,25 @@ struct HomeFactory {
 		return view
 	}
 
+	static func makeAddExpenseChildView(
+		expense: EstalviaExpense,
+		onSaved: (() -> Void)? = nil
+	) -> AddExpenseChildView {
+		let repo: HomeRepositoryProtocol = DependencyContainer.resolve(HomeRepositoryKey.self)
+		let useCase = HomeUpdateExpenseUseCase(repo: repo)
+		let viewModel = AddExpenseChildViewModel(expense: expense, useCase: useCase)
+		let view = AddExpenseChildView(viewModel: viewModel)
+		return view
+	}
+
+	static func makeExpenseChildListView(from expense: EstalviaExpense, coordinatorOutput: HomeNavigationOutputs) -> ExpenseChildsView {
+		let repo: HomeRepositoryProtocol = DependencyContainer.resolve(HomeRepositoryKey.self)
+		let useCase: HomeUpdateExpenseUseCaseProtocol =  HomeUpdateExpenseUseCase(repo: repo)
+		let viewModel = ExpenseChildsViewModel(expense: expense, useCase: useCase, navigationOutput: coordinatorOutput)
+		let view = ExpenseChildsView(viewModel: viewModel)
+		return view
+	}
+
 	static func makeExpenseListView(from expense: EstalviaExpense) -> EstalviaExpenseTypeCell {
 		EstalviaExpenseTypeCell(
 			config: EstalviaExpenseTypeCellConfig(

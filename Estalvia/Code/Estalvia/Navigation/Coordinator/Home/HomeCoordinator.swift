@@ -12,6 +12,11 @@ final class HomeCoordinator: EstalviaNavigationCoordinatorProtocol {
 	enum State {
 		case initial
 		case showAddExpenseView(onSaved: (() -> Void)? = nil)
+		case showAddExpenseChildView(
+			expense: EstalviaExpense,
+			onSaved: (() -> Void)? = nil
+		)
+		case showParentExpenseDetail(expense: EstalviaExpense)
 	}
 
 	private var currentState: State = .initial
@@ -45,6 +50,10 @@ final class HomeCoordinator: EstalviaNavigationCoordinatorProtocol {
 			buildHome()
 		case .showAddExpenseView(let onSaved):
 			showAddExpenseView(onSaved: onSaved)
+		case .showAddExpenseChildView(let expense, let onSaved):
+			showAddExpenseChildView(expense: expense, onSaved: onSaved)
+		case .showParentExpenseDetail(let expense):
+			showParentDetailView(expense: expense)
 		}
 	}
 
@@ -67,10 +76,42 @@ final class HomeCoordinator: EstalviaNavigationCoordinatorProtocol {
 		}
 		navigationController.present(hostVC, animated: true)
 	}
+
+	private func showAddExpenseChildView(expense: EstalviaExpense, onSaved: (() -> Void)?) {
+		let addExpenseView = HomeFactory.makeAddExpenseChildView(expense: expense, onSaved: onSaved)
+		let hostVC = UIHostingController(rootView: addExpenseView)
+		hostVC.modalPresentationStyle = .pageSheet
+
+		if let sheet = hostVC.sheetPresentationController {
+			sheet.detents = [.medium()]              // equivalente a .presentationDetents([.medium])
+			sheet.prefersGrabberVisible = true       // opcional, muestra el “tirador”
+			sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+			sheet.largestUndimmedDetentIdentifier = .medium
+		}
+		navigationController.present(hostVC, animated: true)
+	}
+
+	private func showParentDetailView(expense: EstalviaExpense) {
+		let view = HomeFactory.makeExpenseChildListView(from: expense, coordinatorOutput: self)
+		let hostVC = UIHostingController(rootView: view)
+		navigationController.pushViewController(hostVC, animated: true)
+	}
+
+	private func expenseChildList(expense: EstalviaExpense) -> some View {
+		HomeFactory.makeExpenseListView(from: expense)
+	}
 }
 
 extension HomeCoordinator: HomeNavigationOutputs {
 	func showAddExpense(onSaved: (() -> Void)?) {
 		self.loop(to: .showAddExpenseView(onSaved: onSaved))
+	}
+
+	func showAddExpenseChild(expense: EstalviaExpense, onSaved: (() -> Void)?) {
+		self.loop(to: .showAddExpenseChildView(expense: expense, onSaved: onSaved))
+	}
+
+	func showParentExpenseDetail(expense: EstalviaExpense) {
+		self.loop(to: .showParentExpenseDetail(expense: expense))
 	}
 }

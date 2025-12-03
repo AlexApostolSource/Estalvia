@@ -47,4 +47,8 @@ final class HomeViewModel {
 	func didPressAddExpense(onSaved: (() -> Void)? = nil) {
 		navigationOutput.showAddExpense(onSaved: onSaved)
 	}
+
+	func didTapExpense(_ expense: EstalviaExpense) {
+		navigationOutput.showParentExpenseDetail(expense: expense)
+	}
 }

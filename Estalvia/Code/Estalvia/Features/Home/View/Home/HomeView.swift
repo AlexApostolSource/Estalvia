@@ -14,7 +14,9 @@ struct HomeView: View {
 		VStack {
 			ExpenseListView(expenses: viewModel.expenses, action: ExpenseListViewSwipeAction(destructiveAction: { expense in
 				viewModel.deleteExpense(expense)
-			}))
+			})) { expense in
+				viewModel.didTapExpense(expense)
+			}
 			Spacer()
 			HStack {
 				Spacer(minLength: 0)

@@ -21,7 +21,7 @@ public struct HomeSaveExpanseUseCase: HomeSaveExpanseUseCaseProtocol {
 	public func saveExpense(amount: String, description: String) {
 		do {
             let amount = try parseAmount(amount)
-			let entity = EstalviaExpense(id: UUID().uuidString, name: description, amount: amount, date: Date.now)
+			let entity = EstalviaExpense(id: UUID().uuidString, name: description, amount: amount, date: Date.now, child: nil)
 			try repository.save(entity: entity)
 		} catch {
 			print(error)

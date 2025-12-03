@@ -7,14 +7,26 @@
 import EstalviaDesignSystem
 import SwiftUI
 
-struct ExpenseChilds: View {
+struct ExpenseChildsView: View {
 	@State var viewModel: ExpenseChildsViewModel
 
 	var body: some View {
-		if let expense = viewModel.expense.child {
-			ExpenseListView(expenses: expense, action: ExpenseListViewSwipeAction(destructiveAction: { _ in
+		let expenses = viewModel.expense.child ?? []
+			VStack {
+				ExpenseListView(expenses: expenses, action: ExpenseListViewSwipeAction(destructiveAction: { expense in
+					viewModel.removeChild(child: expense)
+				}))
+				Spacer()
+				HStack {
+					Spacer(minLength: 0)
+					Button("+") {
+						viewModel.didPressAddChild()
+					}.estalviaPrimaryButton(
+						size: .circle,
+						color: .estalviaPrimaryGreen
+					).frame(maxWidth: 44).padding(.trailing, 24)
+				}
+			}.padding(.bottom, 16)
 
-			}))
-		}
 	}
 }

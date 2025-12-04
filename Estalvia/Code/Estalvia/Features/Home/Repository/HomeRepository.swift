@@ -67,9 +67,7 @@ public struct HomeRepository: HomeRepositoryProtocol {
 		// 2. Mapear campos de dominio → persistencia
 		persisted.amount = expense.amount
 		persisted.date = expense.date
-		persisted.childs = expense.child.map { children in
-			children.map { ExpenseMapper.toRemote($0) }
-		}
+		persisted.parentId = expenseId
 		persisted.name = expense.name
 
 		try localDataSourceProvider.saveContext()
@@ -77,7 +75,6 @@ public struct HomeRepository: HomeRepositoryProtocol {
 }
 
 struct ExpenseMapper {
-
 	// Dominio -> Persistencia
 	static func toRemote(_ domain: EstalviaExpense) -> EstalviaExpenseRemote {
 		EstalviaExpenseRemote(
@@ -85,7 +82,7 @@ struct ExpenseMapper {
 			name: domain.name,
 			amount: domain.amount,
 			date: domain.date,
-			childs: domain.child?.map { toRemote($0) }    // hijos recursivos
+			parentId: domain.parentId
 		)
 	}
 
@@ -96,7 +93,7 @@ struct ExpenseMapper {
 			name: remote.name,
 			amount: remote.amount,
 			date: remote.date,
-			child: remote.childs?.map { toDomain($0) }
+			parentId: remote.parentId
 		)
 	}
 }

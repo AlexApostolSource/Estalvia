@@ -9,6 +9,7 @@ import Foundation
 
 public protocol HomeSaveExpanseUseCaseProtocol {
 	func saveExpense(amount: String, description: String)
+	func saveExpense(expense: EstalviaExpense)
 }
 
 public struct HomeSaveExpanseUseCase: HomeSaveExpanseUseCaseProtocol {
@@ -21,8 +22,16 @@ public struct HomeSaveExpanseUseCase: HomeSaveExpanseUseCaseProtocol {
 	public func saveExpense(amount: String, description: String) {
 		do {
             let amount = try parseAmount(amount)
-			let entity = EstalviaExpense(id: UUID().uuidString, name: description, amount: amount, date: Date.now, child: nil)
+			let entity = EstalviaExpense(id: UUID().uuidString, name: description, amount: amount, date: Date.now)
 			try repository.save(entity: entity)
+		} catch {
+			print(error)
+		}
+	}
+
+	public func saveExpense(expense: EstalviaExpense) {
+		do {
+			try repository.save(entity: expense)
 		} catch {
 			print(error)
 		}

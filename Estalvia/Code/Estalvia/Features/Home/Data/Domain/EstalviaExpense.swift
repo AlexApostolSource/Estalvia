@@ -12,13 +12,19 @@ public struct EstalviaExpense: Identifiable {
 	public let name: String
 	public let amount: Double
 	public let date: Date
-	public var child: [EstalviaExpense]?
+	public var parentId: String?   // nil = raíz
 
-	public init(id: String, name: String, amount: Double, date: Date, child: [EstalviaExpense]?) {
+	public init(
+		id: String,
+		name: String,
+		amount: Double,
+		date: Date,
+		parentId: String? = nil
+	) {
 		self.id = id
 		self.name = name
 		self.amount = amount
 		self.date = date
-		self.child = child
+		self.parentId = parentId
 	}
 }

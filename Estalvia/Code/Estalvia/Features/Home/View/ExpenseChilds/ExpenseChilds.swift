@@ -11,9 +11,8 @@ struct ExpenseChildsView: View {
 	@State var viewModel: ExpenseChildsViewModel
 
 	var body: some View {
-		let expenses = viewModel.expense.child ?? []
 			VStack {
-				ExpenseListView(expenses: expenses, action: ExpenseListViewSwipeAction(destructiveAction: { expense in
+				ExpenseListView(expenses: viewModel.children, action: ExpenseListViewSwipeAction(destructiveAction: { expense in
 					viewModel.removeChild(child: expense)
 				}))
 				Spacer()
@@ -26,7 +25,9 @@ struct ExpenseChildsView: View {
 						color: .estalviaPrimaryGreen
 					).frame(maxWidth: 44).padding(.trailing, 24)
 				}
-			}.padding(.bottom, 16)
+			}.onAppear(perform: {
+				viewModel.loadChildren()
+			}).padding(.bottom, 16)
 
 	}
 }

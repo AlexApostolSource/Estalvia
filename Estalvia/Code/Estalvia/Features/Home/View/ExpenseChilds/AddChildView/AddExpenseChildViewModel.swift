@@ -10,31 +10,27 @@ import SwiftUI
 @Observable
 final class AddExpenseChildViewModel {
 	private var expense: EstalviaExpense
-	private let useCase: HomeUpdateExpenseUseCaseProtocol
+	private let useCase: HomeSaveExpanseUseCaseProtocol
 	var amount: String
 	var description: String
 
-	init(expense: EstalviaExpense, useCase: HomeUpdateExpenseUseCaseProtocol) {
+	init(expense: EstalviaExpense, useCase: HomeSaveExpanseUseCaseProtocol) {
 		self.expense = expense
 		self.useCase = useCase
 		amount = ""
 		description = ""
-		self.expense.child = []
-
 	}
 
 	func addChild() {
 		do {
-			expense.child?.append(
-				EstalviaExpense(
-					id: UUID().uuidString,
-					name: description,
-					amount: Double(amount) ?? 0.0,
-					date: Date(),
-					child: nil
-				)
+			let child = EstalviaExpense(
+				id: UUID().uuidString,
+				name: description,
+				amount: Double(amount) ?? 0.0,
+				date: Date(),
+				parentId: expense.id
 			)
-			try useCase.update(expense: expense)
+			try useCase.saveExpense(expense: child)
 		} catch {
 			print(error)
 		}

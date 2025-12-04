@@ -24,16 +24,22 @@ struct HomeFactory {
 		onSaved: (() -> Void)? = nil
 	) -> AddExpenseChildView {
 		let repo: HomeRepositoryProtocol = DependencyContainer.resolve(HomeRepositoryKey.self)
-		let useCase = HomeUpdateExpenseUseCase(repo: repo)
+		let useCase = HomeSaveExpanseUseCase(repository: repo)
 		let viewModel = AddExpenseChildViewModel(expense: expense, useCase: useCase)
-		let view = AddExpenseChildView(viewModel: viewModel)
+		let view = AddExpenseChildView(viewModel: viewModel, onSaved: onSaved)
 		return view
 	}
 
 	static func makeExpenseChildListView(from expense: EstalviaExpense, coordinatorOutput: HomeNavigationOutputs) -> ExpenseChildsView {
 		let repo: HomeRepositoryProtocol = DependencyContainer.resolve(HomeRepositoryKey.self)
 		let useCase: HomeUpdateExpenseUseCaseProtocol =  HomeUpdateExpenseUseCase(repo: repo)
-		let viewModel = ExpenseChildsViewModel(expense: expense, useCase: useCase, navigationOutput: coordinatorOutput)
+		let getExpenseUseCase: HomeGetExpenseUseCaseProtocol = HomeGetExpenseUseCase(repository: repo)
+		let viewModel = ExpenseChildsViewModel(
+			expense: expense,
+			useCase: useCase,
+			getExpensesUseCase: getExpenseUseCase,
+			navigationOutput: coordinatorOutput
+		)
 		let view = ExpenseChildsView(viewModel: viewModel)
 		return view
 	}

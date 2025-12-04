@@ -29,7 +29,7 @@ final class HomeViewModel {
 	func getExpenses() {
 		do {
 			let result = try useCase.getExpenses()
-			expenses = result
+			expenses = result.filter { $0.parentId == nil }
 		} catch {
 			print(error)
 		}

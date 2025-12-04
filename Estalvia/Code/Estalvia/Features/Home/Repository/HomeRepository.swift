@@ -24,6 +24,9 @@ public struct HomeRepository: HomeRepositoryProtocol {
 	}
 
 	public func save(entity: EstalviaExpense) throws {
+		guard entity.amount > 0 else {
+			throw HomeRepositoryError.invalidAmount
+		}
 		try localDataSourceProvider.save(entity: ExpenseMapper.toRemote(entity))
 	}
 
@@ -53,6 +56,9 @@ public struct HomeRepository: HomeRepositoryProtocol {
 	}
 
 	public func update(expense: EstalviaExpense) throws {
+		guard expense.amount > 0 else {
+			throw HomeRepositoryError.invalidAmount
+		}
 		// 1. Buscar el modelo de persistencia en SwiftData usando su id de dominio
 		let expenseId = expense.id
 
@@ -96,4 +102,8 @@ struct ExpenseMapper {
 			parentId: remote.parentId
 		)
 	}
+}
+
+enum HomeRepositoryError: Error {
+	case invalidAmount
 }

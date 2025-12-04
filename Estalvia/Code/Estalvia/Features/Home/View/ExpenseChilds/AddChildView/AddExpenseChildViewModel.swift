@@ -13,6 +13,8 @@ final class AddExpenseChildViewModel {
 	private let useCase: HomeSaveExpanseUseCaseProtocol
 	var amount: String
 	var description: String
+	var isErrorPresented = false
+	var errorTitle: String = ""
 
 	init(expense: EstalviaExpense, useCase: HomeSaveExpanseUseCaseProtocol) {
 		self.expense = expense
@@ -21,18 +23,27 @@ final class AddExpenseChildViewModel {
 		description = ""
 	}
 
-	func addChild() {
+	func addChild() -> Bool {
+		let child = EstalviaExpense(
+			id: UUID().uuidString,
+			name: description,
+			amount: Double(amount) ?? 0.0,
+			date: Date(),
+			parentId: expense.id
+		)
 		do {
-			let child = EstalviaExpense(
-				id: UUID().uuidString,
-				name: description,
-				amount: Double(amount) ?? 0.0,
-				date: Date(),
-				parentId: expense.id
-			)
 			try useCase.saveExpense(expense: child)
+			return isErrorPresented
+		} catch let error as HomeRepositoryError {
+			switch error {
+			case .invalidAmount:
+				errorTitle = "La cantidad insertad no es valida"
+				isErrorPresented = true
+			}
 		} catch {
-			print(error)
+			errorTitle = "Error desconocido vuelva a intentarlo"
+			isErrorPresented = true
 		}
+		return isErrorPresented
 	}
 }

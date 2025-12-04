@@ -9,7 +9,8 @@ import EstalviaDesignSystem
 import SwiftUI
 
 struct HomeViewAddExpenseView: View {
-	@ObservedObject var viewModel: HomeAddExpenseViewModel
+	@State var viewModel: HomeAddExpenseViewModel
+	@Environment(\.dismiss) private var dismiss
 	private var onSaved: (() -> Void)?
 
 	public init(viewModel: HomeAddExpenseViewModel, onSaved: (() -> Void)? = nil) {
@@ -29,10 +30,18 @@ struct HomeViewAddExpenseView: View {
 				description: "Descripción",
 				placeholderAmount: "Capital inicial",
 				placeHolderDescription: "", rightButtonAction: {
-					viewModel.saveExpense()
-					onSaved?()
+					let hasOperationFailed = viewModel.saveExpense()
+					if !hasOperationFailed { // True means the operation has failed
+						onSaved?()
+						dismiss()
+					}
 				})
-		}
+		}.alert(viewModel.errorTitle, isPresented: $viewModel.isErrorPresented) {
+			Button("Aceptar", role: .cancel) {
+					  viewModel.isErrorPresented.toggle()
+				  }
+			  }
+
 	}
 }
 

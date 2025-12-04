@@ -8,17 +8,33 @@
 import Combine
 import SwiftUI
 
-final class HomeAddExpenseViewModel: ObservableObject {
+@Observable
+final class HomeAddExpenseViewModel {
 	private let useCase: HomeSaveExpanseUseCaseProtocol
-	@Published var amount: String = ""
-	@Published var description: String = ""
+	var amount: String = ""
+	var description: String = ""
+	var isErrorPresented = false
+	var errorTitle: String = ""
 
 	init(useCase: HomeSaveExpanseUseCaseProtocol) {
 		self.useCase = useCase
 	}
 
-	func saveExpense() {
-		guard !amount.isEmpty, !description.isEmpty else { return }
-		useCase.saveExpense(amount: amount, description: description)
+	func saveExpense() -> Bool {
+		guard !amount.isEmpty, !description.isEmpty else { return isErrorPresented }
+		do {
+			try useCase.saveExpense(amount: amount, description: description)
+			return isErrorPresented
+		} catch let error as HomeRepositoryError {
+			switch error {
+			case .invalidAmount:
+				errorTitle = "La cantidad insertad no es valida"
+				isErrorPresented = true
+			}
+		} catch {
+			errorTitle = "Error desconocido vuelva a intentarlo"
+			isErrorPresented = true
+		}
+		return isErrorPresented
 	}
 }

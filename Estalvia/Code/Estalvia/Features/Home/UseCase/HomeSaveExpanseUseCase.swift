@@ -8,8 +8,8 @@
 import Foundation
 
 public protocol HomeSaveExpanseUseCaseProtocol {
-	func saveExpense(amount: String, description: String)
-	func saveExpense(expense: EstalviaExpense)
+	func saveExpense(amount: String, description: String) throws
+	func saveExpense(expense: EstalviaExpense) throws
 }
 
 public struct HomeSaveExpanseUseCase: HomeSaveExpanseUseCaseProtocol {
@@ -19,21 +19,21 @@ public struct HomeSaveExpanseUseCase: HomeSaveExpanseUseCaseProtocol {
 		self.repository = repository
 	}
 
-	public func saveExpense(amount: String, description: String) {
+	public func saveExpense(amount: String, description: String) throws {
 		do {
             let amount = try parseAmount(amount)
 			let entity = EstalviaExpense(id: UUID().uuidString, name: description, amount: amount, date: Date.now)
 			try repository.save(entity: entity)
 		} catch {
-			print(error)
+			throw error
 		}
 	}
 
-	public func saveExpense(expense: EstalviaExpense) {
+	public func saveExpense(expense: EstalviaExpense) throws {
 		do {
 			try repository.save(entity: expense)
 		} catch {
-			print(error)
+			throw error
 		}
 	}
 

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct AddExpenseChildView: View {
 	@State var viewModel: AddExpenseChildViewModel
+	@Environment(\.dismiss) private var dismiss
 	private var onSaved: (() -> Void)?
 
 	public init(viewModel: AddExpenseChildViewModel, onSaved: (() -> Void)? = nil) {
@@ -29,10 +30,17 @@ struct AddExpenseChildView: View {
 				description: "Descripción",
 				placeholderAmount: "Capital inicial",
 				placeHolderDescription: "", rightButtonAction: {
-					viewModel.addChild()
-					onSaved?()
+					let hasOperationFailed = viewModel.addChild()
+					if !hasOperationFailed { // True means the operation has failed
+						onSaved?()
+						dismiss()
+					}
 				})
-		}
+		}.alert(viewModel.errorTitle, isPresented: $viewModel.isErrorPresented) {
+			Button("Aceptar", role: .cancel) {
+					  viewModel.isErrorPresented.toggle()
+				  }
+			  }
 	}
 }
 

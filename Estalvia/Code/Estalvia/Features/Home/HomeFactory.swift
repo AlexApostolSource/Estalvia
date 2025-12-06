@@ -44,12 +44,13 @@ struct HomeFactory {
 		return view
 	}
 
-	static func makeExpenseListView(from expense: EstalviaExpense) -> EstalviaExpenseTypeCell {
+	static func makeExpenseListView(from expense: EstalviaExpense, tapAction: (() -> Void)? = nil) -> EstalviaExpenseTypeCell {
 		EstalviaExpenseTypeCell(
 			config: EstalviaExpenseTypeCellConfig(
 				title: expense.name,
 				amount: expense.amount.formatted(),
-				description: expense.date.description
+				description: expense.date.description,
+				tapAction: tapAction
 			)
 		)
 	}

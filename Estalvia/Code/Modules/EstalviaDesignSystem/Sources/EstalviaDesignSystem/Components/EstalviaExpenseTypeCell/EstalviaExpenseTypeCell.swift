@@ -11,12 +11,14 @@ public struct EstalviaExpenseTypeCellConfig {
 	public let title: String
 	public let amount: String
 	public let description: String
+	public let tapAction: (() -> Void)?
 	let currencyHelper = CurrencySymbolHelper.symbol()
 
-	public init(title: String, amount: String, description: String) {
+	public init(title: String, amount: String, description: String, tapAction: (() -> Void)? = nil) {
 		self.title = title
 		self.amount = amount
 		self.description = description
+		self.tapAction = tapAction
 	}
 }
 
@@ -34,7 +36,9 @@ public struct EstalviaExpenseTypeCell: View {
 			.glassEffect(
 				.regular.tint(Color.estalviaSecondaryBlue).interactive(),
 			in: RoundedRectangle(cornerRadius: 16)
-			)
+			).contentShape(RoundedRectangle(cornerRadius: 16)).onTapGesture {
+				config.tapAction?()
+			}
 	}
 
 	public init(config: EstalviaExpenseTypeCellConfig) {

@@ -21,9 +21,9 @@ struct ExpenseListView: View {
 
 	var body: some View {
 		List(expenses) { expense in
-			HomeFactory.makeExpenseListView(from: expense).onTapGesture {
+			HomeFactory.makeExpenseListView(from: expense, tapAction: {
 				didTap?(expense)
-			}.swipeActions {
+			}).swipeActions {
 				Button(role: .destructive) {
 					action.destructiveAction(expense)
 				} label: {

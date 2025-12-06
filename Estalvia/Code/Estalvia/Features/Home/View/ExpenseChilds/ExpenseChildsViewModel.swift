@@ -57,7 +57,7 @@ final class ExpenseChildsViewModel {
 	}
 
 	func didPressAddChild() {
-		navigationOutput.showAddExpenseChild(expense: parent, onSaved: { [weak self] in
+		navigationOutput.showAddExpenseChild(children: children, expense: parent, onSaved: { [weak self] in
 			self?.loadChildren()
 		})
 	}

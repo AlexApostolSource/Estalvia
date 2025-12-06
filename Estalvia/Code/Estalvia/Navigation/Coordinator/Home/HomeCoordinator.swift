@@ -13,6 +13,7 @@ final class HomeCoordinator: EstalviaNavigationCoordinatorProtocol {
 		case initial
 		case showAddExpenseView(onSaved: (() -> Void)? = nil)
 		case showAddExpenseChildView(
+			children: [EstalviaExpense],
 			expense: EstalviaExpense,
 			onSaved: (() -> Void)? = nil
 		)
@@ -50,8 +51,8 @@ final class HomeCoordinator: EstalviaNavigationCoordinatorProtocol {
 			buildHome()
 		case .showAddExpenseView(let onSaved):
 			showAddExpenseView(onSaved: onSaved)
-		case .showAddExpenseChildView(let expense, let onSaved):
-			showAddExpenseChildView(expense: expense, onSaved: onSaved)
+		case .showAddExpenseChildView(let children, let expense, let onSaved):
+			showAddExpenseChildView(children: children, expense: expense, onSaved: onSaved)
 		case .showParentExpenseDetail(let expense):
 			showParentDetailView(expense: expense)
 		}
@@ -77,8 +78,8 @@ final class HomeCoordinator: EstalviaNavigationCoordinatorProtocol {
 		navigationController.present(hostVC, animated: true)
 	}
 
-	private func showAddExpenseChildView(expense: EstalviaExpense, onSaved: (() -> Void)?) {
-		let addExpenseView = HomeFactory.makeAddExpenseChildView(expense: expense, onSaved: onSaved)
+	private func showAddExpenseChildView(children: [EstalviaExpense], expense: EstalviaExpense, onSaved: (() -> Void)?) {
+		let addExpenseView = HomeFactory.makeAddExpenseChildView(expense: expense, children: children, onSaved: onSaved)
 		let hostVC = UIHostingController(rootView: addExpenseView)
 		hostVC.modalPresentationStyle = .pageSheet
 
@@ -107,8 +108,8 @@ extension HomeCoordinator: HomeNavigationOutputs {
 		self.loop(to: .showAddExpenseView(onSaved: onSaved))
 	}
 
-	func showAddExpenseChild(expense: EstalviaExpense, onSaved: (() -> Void)?) {
-		self.loop(to: .showAddExpenseChildView(expense: expense, onSaved: onSaved))
+	func showAddExpenseChild(children: [EstalviaExpense], expense: EstalviaExpense, onSaved: (() -> Void)?) {
+		self.loop(to: .showAddExpenseChildView(children: children, expense: expense, onSaved: onSaved))
 	}
 
 	func showParentExpenseDetail(expense: EstalviaExpense) {

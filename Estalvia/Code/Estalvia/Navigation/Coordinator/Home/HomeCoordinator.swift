@@ -73,7 +73,6 @@ final class HomeCoordinator: EstalviaNavigationCoordinatorProtocol {
 			sheet.detents = [.medium()]              // equivalente a .presentationDetents([.medium])
 			sheet.prefersGrabberVisible = true       // opcional, muestra el “tirador”
 			sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-			sheet.largestUndimmedDetentIdentifier = .medium
 		}
 		navigationController.present(hostVC, animated: true)
 	}
@@ -87,7 +86,6 @@ final class HomeCoordinator: EstalviaNavigationCoordinatorProtocol {
 			sheet.detents = [.medium()]              // equivalente a .presentationDetents([.medium])
 			sheet.prefersGrabberVisible = true       // opcional, muestra el “tirador”
 			sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-			sheet.largestUndimmedDetentIdentifier = .medium
 		}
 		navigationController.present(hostVC, animated: true)
 	}

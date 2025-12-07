@@ -1,0 +1,30 @@
+{
+  "configurations" : [
+    {
+      "id" : "C03F82D5-A06B-4492-B733-566E8F84AEDD",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "performanceAntipatternCheckerEnabled" : true,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Estalvia.xcodeproj",
+      "identifier" : "CBD33DFB2E3E792E0089C92C",
+      "name" : "Estalvia"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : false,
+      "target" : {
+        "containerPath" : "container:Estalvia.xcodeproj",
+        "identifier" : "CBD33E112E3E79330089C92C",
+        "name" : "EstalviaTests"
+      }
+    }
+  ],
+  "version" : 1
+}

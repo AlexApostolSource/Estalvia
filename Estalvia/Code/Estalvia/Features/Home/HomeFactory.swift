@@ -51,7 +51,7 @@ struct HomeFactory {
 			config: EstalviaExpenseTypeCellConfig(
 				title: expense.name,
 				amount: expense.amount.formatted(),
-				description: expense.date.description,
+				description: expense.date.estalviaStyle,
 				tapAction: tapAction
 			)
 		)

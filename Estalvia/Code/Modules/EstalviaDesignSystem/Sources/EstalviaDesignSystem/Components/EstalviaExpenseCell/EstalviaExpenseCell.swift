@@ -89,11 +89,7 @@ public struct EstalviaExpenseCellPreview: View {
 	}
 
 	public init() {
-		self.dateFormatter = DateFormatter()
-		dateFormatter.calendar = .autoupdatingCurrent
-		dateFormatter.locale   = .autoupdatingCurrent
-		dateFormatter.timeZone = .autoupdatingCurrent
-		dateFormatter.dateFormat = "dd MMM, yyyy"
+		self.dateFormatter = .custom()
 	}
 }
 

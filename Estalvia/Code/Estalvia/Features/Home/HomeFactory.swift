@@ -9,6 +9,7 @@ import Foundation
 import SwiftData
 import SwiftInject
 import SwiftPersistance
+import SwiftUI
 
 struct HomeFactory {
 	static func makeAddExpenseView(onSaved: (() -> Void)? = nil ) -> HomeViewAddExpenseView {
@@ -55,6 +56,24 @@ struct HomeFactory {
 				tapAction: tapAction
 			)
 		)
+	}
+
+	static func makeTransactionListView(transaction: EstalviaTransaction) -> EstalviaExpenseCell {
+		EstalviaExpenseCell(
+			image: Image(transaction.image ?? "home"),
+			expenseTitle: transaction.name,
+			date: transaction.date,
+			amount: transaction.amount,
+			initialAmount: transaction.initialAmount,
+			remainingAmount: transaction.remainingAmount,
+			formatter: DateFormatter.custom()
+		)
+	}
+
+	static func makeExpenseDetailView(expense: EstalviaExpense) -> ExpenseDetail {
+		let viewModel = ExpenseDetailViewModel(expense: expense)
+		let view = ExpenseDetail(viewModel: viewModel)
+		return view
 	}
 
 	static func createHomeView(navigationOutput: HomeNavigationOutputs) -> HomeView {

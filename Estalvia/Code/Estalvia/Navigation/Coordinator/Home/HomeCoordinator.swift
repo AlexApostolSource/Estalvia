@@ -18,6 +18,7 @@ final class HomeCoordinator: EstalviaNavigationCoordinatorProtocol {
 			onSaved: (() -> Void)? = nil
 		)
 		case showParentExpenseDetail(expense: EstalviaExpense)
+		case showExpenseDetail(expense: EstalviaExpense)
 	}
 
 	private var currentState: State = .initial
@@ -55,7 +56,15 @@ final class HomeCoordinator: EstalviaNavigationCoordinatorProtocol {
 			showAddExpenseChildView(children: children, expense: expense, onSaved: onSaved)
 		case .showParentExpenseDetail(let expense):
 			showParentDetailView(expense: expense)
+		case .showExpenseDetail(let expense):
+			buildExpenseDetail(expense: expense)
 		}
+	}
+
+	private func buildExpenseDetail(expense: EstalviaExpense) {
+		let view = HomeFactory.makeExpenseDetailView(expense: expense)
+		let hostVC = UIHostingController(rootView: view)
+		navigationController.pushViewController(hostVC, animated: true)
 	}
 
 	private func buildHome() {
@@ -110,7 +119,11 @@ extension HomeCoordinator: HomeNavigationOutputs {
 		self.loop(to: .showAddExpenseChildView(children: children, expense: expense, onSaved: onSaved))
 	}
 
-	func showParentExpenseDetail(expense: EstalviaExpense) {
+	func showExpenseChildList(expense: EstalviaExpense) {
 		self.loop(to: .showParentExpenseDetail(expense: expense))
+	}
+
+	func showExpenseDetail(expense: EstalviaExpense) {
+		self.loop(to: .showExpenseDetail(expense: expense))
 	}
 }

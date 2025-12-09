@@ -6,8 +6,9 @@
 //
 
 @MainActor
-protocol HomeNavigationOutputs: AnyObject {
+public protocol HomeNavigationOutputs: AnyObject {
 	func showAddExpense(onSaved: (() -> Void)?)
 	func showAddExpenseChild(children: [EstalviaExpense], expense: EstalviaExpense, onSaved: (() -> Void)?)
-	func showParentExpenseDetail(expense: EstalviaExpense)
+	func showExpenseChildList(expense: EstalviaExpense)
+	func showExpenseDetail(expense: EstalviaExpense)
 }

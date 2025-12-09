@@ -7,20 +7,33 @@
 
 import SwiftUI
 
-public protocol EstalviaExpenseProtocol {
-	var color: Color { get }
-	var title: String { get }
-	var amount: String { get }
+public enum EstalviaExpenseTransactionType {
+	case positive
+	case negative
+	case idle
 }
 
-public struct EstalviaExpense: EstalviaExpenseProtocol {
+extension EstalviaExpenseTransactionType {
+	var color: Color {
+		switch self {
+		case .positive:
+			return Color.estalviaPrimaryGreen
+		case .negative:
+			return Color.estalviaPrimaryRed
+		case .idle:
+			return Color.estalviaPrimaryBlack
+		}
+	}
+}
+
+public struct EstalviaExpenseTransactionTypeData {
 	public let amount: String
-	public var color: Color
+	public var type: EstalviaExpenseTransactionType
 	public var title: String
 
-	init(amount: String, color: Color, title: String = "Default title") {
+	public init(amount: String, type: EstalviaExpenseTransactionType, title: String = "Default title") {
 		self.amount = amount
-		self.color = color
+		self.type = type
 		self.title = title
 	}
 }
@@ -29,9 +42,9 @@ public struct EstalviaExpenseCell: View {
 	public let image: Image
 	public let expenseTitle: String
 	public let date: Date
-	public let amount: EstalviaExpenseProtocol
-	public let initialAmount: EstalviaExpenseProtocol
-	public let remainingAmount: EstalviaExpenseProtocol
+	public let amount: EstalviaExpenseTransactionTypeData
+	public let initialAmount: EstalviaExpenseTransactionTypeData
+	public let remainingAmount: EstalviaExpenseTransactionTypeData
 	public let formatter: DateFormatter
 	public var body: some View {
 		VStack {
@@ -42,24 +55,42 @@ public struct EstalviaExpenseCell: View {
 					Text(formatter.string(from: date)).estalviaTextView(.subtitle)
 				}.padding(EdgeInsets(top: 0, leading: 22, bottom: 0, trailing: 0))
 				Spacer()
-				Text(amount.amount).estalviaTextView(.amountPrimary, color: amount.color)
+				Text(amount.amount).estalviaTextView(.amountPrimary, color: amount.type.color)
 			}.padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
 			Divider().frame(height: 1 / UIScreen.main.scale).padding(16).foregroundStyle(Color.estalviaPrimaryBlack)
 			HStack {
 				VStack(alignment: .leading) {
 					Text(initialAmount.title).estalviaTextView(.subtitle)
-					Text("\(initialAmount.amount)").estalviaTextView(.amountPrimary, color: initialAmount.color)
+					Text("\(initialAmount.amount)").estalviaTextView(.amountPrimary, color: amount.type.color)
 				}
 				Spacer()
 				VStack(alignment: .trailing) {
 					Text(remainingAmount.title).estalviaTextView(.subtitle)
-					Text("\(remainingAmount.amount)").estalviaTextView(.amountPrimary, color: remainingAmount.color)
+					Text("\(remainingAmount.amount)").estalviaTextView(.amountPrimary, color: amount.type.color)
 				}
 			}.padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
 		}.padding(EdgeInsets(top: 32, leading: 0, bottom: 32, trailing: 0)).overlay {
 			RoundedRectangle(cornerRadius: 16)
 				.stroke(Color.estalviaPrimaryGray, lineWidth: 1)
 		}
+	}
+
+	public init(
+		image: Image,
+		expenseTitle: String,
+		date: Date,
+		amount: EstalviaExpenseTransactionTypeData,
+		initialAmount: EstalviaExpenseTransactionTypeData,
+		remainingAmount: EstalviaExpenseTransactionTypeData,
+		formatter: DateFormatter
+	) {
+		self.image = image
+		self.expenseTitle = expenseTitle
+		self.date = date
+		self.amount = amount
+		self.initialAmount = initialAmount
+		self.remainingAmount = remainingAmount
+		self.formatter = formatter
 	}
 }
 
@@ -70,18 +101,18 @@ public struct EstalviaExpenseCellPreview: View {
 			image: .init(systemName: "house"),
 			expenseTitle: "Alquiler",
 			date: Date.now,
-			amount: EstalviaExpense(
+			amount: EstalviaExpenseTransactionTypeData(
 				amount: EstalviaNumberFormatter.format(2500000),
-				color: .estalviaPrimaryRed
+				type: .negative
 			),
-			initialAmount: EstalviaExpense(
+			initialAmount: EstalviaExpenseTransactionTypeData(
 				amount: EstalviaNumberFormatter.format(-2500),
-				color: .estalviaPrimaryBlack,
+				type: .idle,
 				title: "Capital antes"
 			),
-			remainingAmount: EstalviaExpense(
+			remainingAmount: EstalviaExpenseTransactionTypeData(
 				amount: EstalviaNumberFormatter.format(2500),
-				color: .estalviaPrimaryGreen,
+				type: .positive,
 				title: "Capital despues"
 			),
 			formatter: dateFormatter

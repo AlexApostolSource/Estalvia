@@ -5,6 +5,7 @@
 //  Created by Alex.personal on 9/11/25.
 //
 
+import EstalviaDesignSystem
 import Foundation
 import SwiftData
 import SwiftPersistance
@@ -88,7 +89,8 @@ struct ExpenseMapper {
 			name: domain.name,
 			amount: domain.amount,
 			date: domain.date,
-			parentId: domain.parentId
+			parentId: domain.parentId,
+			transactions: domain.transactions.map { TransactionMapper.toRemote($0) }
 		)
 	}
 
@@ -99,8 +101,73 @@ struct ExpenseMapper {
 			name: remote.name,
 			amount: remote.amount,
 			date: remote.date,
+			parentId: remote.parentId,
+			transactions: remote.transactions?.compactMap { TransactionMapper.toDomain($0) } ?? []
+		)
+	}
+}
+
+struct TransactionMapper {
+	static func toDomain(_ remote: EstalviaTransactionRemote) -> EstalviaTransaction {
+		EstalviaTransaction(
+			id: remote.id,
+			name: remote.name,
+			date: remote.date,
+			image: remote.image,
+			amount: EstalviaExpenseTransactionTypeDataMapper.toDomain(remote.amount),
+			initialAmount: EstalviaExpenseTransactionTypeDataMapper.toDomain(remote.initialAmount),
+			remainingAmount: EstalviaExpenseTransactionTypeDataMapper.toDomain(remote.remainingAmount),
 			parentId: remote.parentId
 		)
+	}
+
+	static func toRemote(_ domain: EstalviaTransaction) -> EstalviaTransactionRemote {
+		EstalviaTransactionRemote(
+			id: domain.id,
+			name: domain.name,
+			date: domain.date,
+			image: domain.image,
+			amount: EstalviaExpenseTransactionTypeDataMapper.toRemote(domain.amount),
+			initialAmount: EstalviaExpenseTransactionTypeDataMapper.toRemote(domain.initialAmount),
+			remainingAmount: EstalviaExpenseTransactionTypeDataMapper.toRemote(domain.remainingAmount),
+			parentId: domain.parentId
+		)
+	}
+}
+
+struct EstalviaExpenseTransactionTypeDataMapper {
+	static func toRemote(_ domain: EstalviaExpenseTransactionTypeData) -> EstalviaExpenseProtocolRemote {
+		EstalviaExpenseProtocolRemote(type: domain.type.toRemote, title: domain.title, amount: domain.amount)
+	}
+
+	static func toDomain(_ remote: EstalviaExpenseProtocolRemote) -> EstalviaExpenseTransactionTypeData {
+		EstalviaExpenseTransactionTypeData(amount: remote.amount, type: remote.type.toDomain, title: remote.title)
+	}
+}
+
+extension EstalviaExpenseTransactionType {
+	var toRemote: EstalviaExpenseRemoteTransactionType {
+		switch self {
+		case .positive:
+			return .positive
+		case .negative:
+			return .negative
+		case .idle:
+			return .idle
+		}
+	}
+}
+
+extension EstalviaExpenseRemoteTransactionType {
+	var toDomain: EstalviaExpenseTransactionType {
+		switch self {
+		case .positive:
+			return .positive
+		case .negative:
+			return .negative
+		case .idle:
+			return .idle
+		}
 	}
 }
 

@@ -13,6 +13,7 @@ final class HomeViewModel {
 	private let useCase: HomeGetExpenseUseCaseProtocol
 	private let deleteExpenseUseCase: HomeDeleteExpenseUseCaseProtocol
 	private let navigationOutput: HomeNavigationOutputs
+	private var rawExpense: [EstalviaExpense] = []
 
 	private(set) var expenses: [EstalviaExpense] = []
 
@@ -29,6 +30,7 @@ final class HomeViewModel {
 	func getExpenses() {
 		do {
 			let result = try useCase.getExpenses()
+			rawExpense = result
 			expenses = result.filter { $0.parentId == nil }
 		} catch {
 			print(error)
@@ -49,6 +51,12 @@ final class HomeViewModel {
 	}
 
 	func didTapExpense(_ expense: EstalviaExpense) {
-		navigationOutput.showParentExpenseDetail(expense: expense)
+		let hasChild = rawExpense.contains(where: { $0.parentId == expense.id })
+		if hasChild {
+			navigationOutput.showExpenseChildList(expense: expense)
+		} else {
+			navigationOutput.showExpenseDetail(expense: expense)
+		}
+
 	}
 }

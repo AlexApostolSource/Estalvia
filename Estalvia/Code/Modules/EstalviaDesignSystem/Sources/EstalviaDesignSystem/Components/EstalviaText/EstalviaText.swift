@@ -24,7 +24,7 @@ public struct EstalviaTextPreview: View {
     EstalviaTextPreview()
 }
 
-public enum EstalviaTextViewStyle {
+public enum EstalviaTextViewStyle: Sendable {
     case title
     case subtitle
     case body
